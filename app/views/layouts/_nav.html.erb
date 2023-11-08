@@ -2,10 +2,8 @@
     <h1 class="logo"><a href="/">TBD Name</a></h1>
         <ul class="main-nav">
             <li><a href="/">Home</a></li>
-            <% if current_user %>
-                <li><a href="/devise/users/sign_out">Log Out</a></li>
-            <% else %>
-                <li><a href="/devise/users/sign_in">Log In</a></li>
+            <% if current_user.nil? %>
+                <li><a href="/users/sign_up">Sign Up</a></li>
             <% end %>
         </ul>
 </header> 
