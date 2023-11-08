@@ -84,6 +84,19 @@ a {
 }
 
 
+.signup-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.signup {
+  padding: 16px;
+  width: fit-content;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
 /* ================================= 
   Media Queries
 ==================================== */
