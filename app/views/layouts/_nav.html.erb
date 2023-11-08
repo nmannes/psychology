@@ -3,9 +3,9 @@
         <ul class="main-nav">
             <li><a href="/">Home</a></li>
             <% if current_user %>
-            <li><a href="#">Log Out</a></li>
+                <li><a href="/devise/users/sign_out">Log Out</a></li>
             <% else %>
-            <li><a href="/users/sign_up">Sign Up</a></li>
+                <li><a href="/devise/users/sign_in">Log In</a></li>
             <% end %>
         </ul>
 </header> 
