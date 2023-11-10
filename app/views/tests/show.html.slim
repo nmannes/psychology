@@ -1,0 +1,36 @@
+css:
+  .content {
+    display: flex;
+    justify-content: center;
+    margin: 16px auto;
+    gap: 16px;
+    flex-direction: column;
+  }
+
+  .test-card {
+    width: 50vw;
+    border: 1px solid black;
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+
+  .test-card:hover {
+    width: 50vw;
+    border: 1px solid black;
+    border-radius: 16px;
+    padding: 16px;
+    background: #44f4f3;
+  }
+
+  p {
+    text-align: center;
+    text-wrap: nowrap;
+  }
+
+div.content
+  - @test_types.each do |test|
+    = link_to test[:url]
+      div.test-card
+        p
+          = test[:name]
