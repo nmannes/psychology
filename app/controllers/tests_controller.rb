@@ -14,4 +14,8 @@ class TestsController < ApplicationController
             },
         ]
     end
+
+    def begin
+        @abcd = params.require(:key)
+    end
 end

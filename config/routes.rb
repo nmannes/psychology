@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root "home#index"
   
   get '/lab' => 'tests#show'
+  get '/lab/begin' => 'tests#begin'
 end
