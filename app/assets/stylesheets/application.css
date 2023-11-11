@@ -87,13 +87,13 @@ a {
 .center-container{
   width: 100%;
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
-.signup {
+.card {
   padding: 16px;
   width: fit-content;
-  border-radius: 15px;
+  border-radius: 16px;
   border: 1px solid black;
 }
 
