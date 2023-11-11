@@ -1,0 +1,6 @@
+<%= form_with url: "/lab/begin", method: :post do |form| %>
+  <%= form.number_field :age %>
+  <%= form.select :gender, ["Man", "Woman", "Non-binary"] %>
+  <%= form.hidden_field :key, value: params.require(:key) %>
+  <%= form.submit "Begin Test" %>
+<% end %>

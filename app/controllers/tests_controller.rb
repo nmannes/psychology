@@ -29,7 +29,7 @@ class TestsController < ApplicationController
 
     def demographics
         data = ::Test.new(
-            type: params.require(:type),
+            test_type: params.require(:key),
             age: params.require(:age),
             gender: params.require(:gender),
             user_id: current_user.id,

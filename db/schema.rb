@@ -14,6 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_161213) do
   create_table "tests", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "test_type"
     t.integer "age"
     t.string "gender"
     t.json "data"
