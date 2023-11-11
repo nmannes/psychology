@@ -2,6 +2,13 @@ class TestsController < ApplicationController
 
     before_action :authenticate_user!
 
+
+    TESTS = {
+        'fluency' => 'Benton Verbal Fluency Test',
+        'memory' =>'Rey Auditory Verbal Learning Test',
+        'trail' => 'Trail Making Test',
+    }
+
     def show
         @test_types = [
             {
@@ -21,10 +28,11 @@ class TestsController < ApplicationController
 
     def begin
         @test = params.require(:key)
-
-        if !['trail','memory','fluency'].include?(@test)
+        @title = TESTS[@test]
+        unless @title
             redirect_to '/lab' and return
         end
+
     end
 
     def demographics
@@ -35,7 +43,14 @@ class TestsController < ApplicationController
             user_id: current_user.id,
         )
         data.save!
-        redirect_to '/lab' and return
+        redirect_to data.url and return
     end
 
+
+    def conduct
+        @test = Test.find_by(id: params[:id].to_i, user_id: current_user.id)
+        unless @test
+            redirect_to '/lab' and return
+        end
+    end
 end

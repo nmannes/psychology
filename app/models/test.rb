@@ -11,4 +11,8 @@
 #  user_id    :integer          not null
 #
 class Test < ApplicationRecord
+
+    def url
+        "/lab/test/#{id}"
+    end
 end

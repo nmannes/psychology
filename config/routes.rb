@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get '/lab' => 'tests#show'
   get '/lab/begin' => 'tests#begin'
   post '/lab/begin' => 'tests#demographics'
+
+  get '/lab/test/:id', to: 'tests#conduct'
 end

@@ -93,10 +93,17 @@ a {
 }
 
 .card {
+  margin: 16px auto;
   padding: 16px;
   width: fit-content;
   border-radius: 16px;
   border: 1px solid black;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 /* ================================= 

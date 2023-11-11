@@ -1,11 +1,20 @@
 
 <div class="card">
+  <p><%= @title %></p>
   <%= form_with url: "/lab/begin", method: :post do |form| %>
-    <%= form.label :age, "Age:" %>
-    <%= form.number_field :age, in: (1..100), step: 1 %>
-    <%= form.label :gender, "Gender:" %>
-    <%= form.select :gender, ["Man", "Woman", "Non-binary"] %>
+    <div class="form-container">
+      <div>
+        <%= form.label :age, "Age:" %>
+        <%= form.number_field :age, in: (1..100), step: 1 %>
+      </div>
+      <div>
+        <%= form.label :gender, "Gender:" %>
+        <%= form.select :gender, ["Man", "Woman", "Non-binary"] %>
+      </div>
     <%= form.hidden_field :key, value: params.require(:key) %>
-    <%= form.submit "Begin Test" %>
+      <div>
+        <%= form.submit "Begin Test" %>
+      </div>
+    </div>
   <% end %>
 </div>
