@@ -12,10 +12,19 @@ class TestsController < ApplicationController
                 :name => 'Rey Auditory Verbal Learning Test',
                 :url => '/lab/begin?key=memory'
             },
+            {
+                :name => 'Trail Making Test',
+                :url => '/lab/begin?key=trail'
+            },
         ]
     end
 
     def begin
-        @abcd = params.require(:key)
+        @test = params.require(:key)
+
+        if !['trail','memory','fluency'].include?(@test)
+            redirect_to '/lab' and return
+        end
+        
     end
 end

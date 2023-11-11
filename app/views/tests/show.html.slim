@@ -12,25 +12,31 @@ css:
     border: 1px solid black;
     border-radius: 16px;
     padding: 16px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    color: black;
   }
-
 
   .test-card:hover {
     width: 50vw;
     border: 1px solid black;
     border-radius: 16px;
     padding: 16px;
-    background: #44f4f3;
+    background: #00008B;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    color: white;
   }
 
   p {
+    font-size: 20px;
+    font-weight: 500;
     text-align: center;
     text-wrap: nowrap;
   }
 
 div.content
-  - @test_types.each do |test|
-    = link_to test[:url]
-      div.test-card
-        p
-          = test[:name]
+  -10.times do 
+    - @test_types.each do |test|
+      = link_to test[:url]
+        div.test-card
+          p
+            = test[:name]

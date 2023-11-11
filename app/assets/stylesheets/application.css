@@ -81,6 +81,7 @@ a {
   border-bottom: 1px solid #34495e;
   width: 100%;
   text-align: center;
+  background-color: #CCFFFF;
 }
 
 
@@ -88,6 +89,7 @@ a {
   width: 100%;
   display: flex;
   justify-content: center;
+  background-color: #CCFFFF;
 }
 
 .card {
@@ -121,5 +123,7 @@ a {
   .header {
     flex-direction: row;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
   }
 }
