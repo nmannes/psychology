@@ -76,4 +76,3 @@ gem 'react-rails', '= 3.1.1'
 gem 'devise'
 
 gem 'slim'
-gem 'simple_form'

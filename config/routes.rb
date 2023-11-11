@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   
   get '/lab' => 'tests#show'
   get '/lab/begin' => 'tests#begin'
+  post '/lab/begin' => 'tests#demographics'
 end
