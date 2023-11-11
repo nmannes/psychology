@@ -25,6 +25,17 @@ class TestsController < ApplicationController
         if !['trail','memory','fluency'].include?(@test)
             redirect_to '/lab' and return
         end
-        
     end
+
+    def demographics
+        data = ::Test.new(
+            type: params.require(:type),
+            age: params.require(:age),
+            gender: params.require(:gender),
+            user_id: current_user.id,
+        )
+        data.save!
+        redirect_to '/lab' and return
+    end
+
 end
