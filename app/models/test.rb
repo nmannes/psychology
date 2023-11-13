@@ -27,7 +27,20 @@ class Test < ApplicationRecord
     end
 
     def current_stage
-        stages.find { |s| !data.has_key?("#{s}_end_ts") }
+        stages.find do |s| 
+            ts_key = "#{s}_start_ts"
+            if !data.has_key?(ts_key) || Time.now - Time.new(data[ts_key]) < 1.minute
+                s
+            end
+        end
+    end
+
+    def completed?
+        current_stage.nil?
+    end
+
+    def curr_stage_start_time
+        data["#{current_stage}_start_ts"]
     end
 
     def instructions

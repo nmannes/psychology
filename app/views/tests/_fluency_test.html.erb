@@ -1,25 +1,33 @@
-<%= turbo_frame_tag :fluency_form do %>
-    <div>
-        <h1>Benton Verbal Fluency Test</h1>
-
-        <h2>Instructions: <span><%= @test.instructions %></span></h2>
-
-        <% if !@test.current_list.blank? %>
-            <h3> You've already said these animals: </h3>
-        <% end %>
-
-        <% @test.current_list.each_with_index do |item, i| %>
+<% if @test.completed? %>
+    <p> test completed</p>
+<% else %>
+    <%= turbo_frame_tag :fluency_form do %>
         <div>
-            <p> 
-                <%= item %> 
-            </p>
-            <%= render partial: "tests/delete_entry_fluency_test",
-                       :locals => { :stage => @test.current_stage, :word => item } %>
+            <h1>Benton Verbal Fluency Test</h1>
+            
+            <h2>Instructions: <span><%= @test.instructions %></span></h2>
+            <% if @test.curr_stage_start_time %>
+            <h3> Test started at <%= @test.curr_stage_start_time %> </h3>
+            <% end %>
+
+            <%= render partial: "tests/add_entry_fluency_test",
+                       :locals => { :stage => @test.current_stage } %>
+
+            <% if !@test.current_list.blank? %>
+                <h3> You've already said these animals: </h3>
+            <% end %>
+
+            <% @test.current_list.each_with_index do |item, i| %>
+            <div class="row-entry">
+                <p> 
+                    <%= item %> 
+                </p>
+                <%= render partial: "tests/delete_entry_fluency_test",
+                           :locals => { :stage => @test.current_stage, :word => item } %>
+            </div>
+            <% end %>
+
+
         </div>
-        <% end %>
-
-        <%= render partial: "tests/add_entry_fluency_test",
-                   :locals => { :stage => @test.current_stage } %>
-
-    </div>
+    <% end %>
 <% end %>

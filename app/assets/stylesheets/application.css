@@ -106,6 +106,17 @@ a {
   gap: 16px;
 }
 
+
+.row-entry {
+  display: flex;
+  width: 70%;
+  margin: auto;
+  flex-direction: row;
+  justify-content: space-between;
+  p {
+    margin: 0;
+  }
+}
 /* ================================= 
   Media Queries
 ==================================== */
