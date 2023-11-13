@@ -10,8 +10,10 @@
       <div>
         <%= form.label :gender, "Gender:" %>
         <%= form.select :gender, ["Man", "Woman", "Non-binary"] %>
+       </div>
+       <div>
+         <%= form.label :education, "Level of education:" %>
         <%= form.select :education, @education_levels %>
-
       </div>
     <%= form.hidden_field :key, value: params.require(:key) %>
       <div>
