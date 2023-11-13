@@ -5,6 +5,7 @@ class CreateTests < ActiveRecord::Migration[7.0]
       t.string :test_type
       t.integer :age
       t.string :gender
+      t.string :education
       t.json :data
       t.references :user, null: false, foreign_key: true
     end
