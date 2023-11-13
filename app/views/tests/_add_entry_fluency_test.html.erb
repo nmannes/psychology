@@ -1,0 +1,9 @@
+
+  <%= form_with url: "/lab/test/#{@test.id}", method: :post do |form| %>
+    <%= form.text_field :word %>
+    <%= form.hidden_field :stage, value: stage %>
+      <div>
+        <%= form.submit "Say" %>
+      </div>
+    </div>
+  <% end %>

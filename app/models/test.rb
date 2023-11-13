@@ -17,8 +17,29 @@ class Test < ApplicationRecord
         "/lab/test/#{id}"
     end
 
-    def stage
-        return 'start' if data.blank?
+    def stages
+        case test_type
+        when 'fluency'
+            ['animal', 'f', 's']
+        else
+            ['unimplemented']
+        end
+    end
+
+    def current_stage
+        stages.find { |s| !data.has_key?("#{s}_end_ts") }
+    end
+
+    def instructions
+        {
+            'animal' => 'List as many animals as you can',
+            'f' => 'List as many words beginning with the letter \'F\' as you can',
+            's' => 'List as many words beginning with the letter \'S\' as you can'
+        }[current_stage]
+    end
+
+    def current_list
+        data[current_stage] || []
     end
 
 end

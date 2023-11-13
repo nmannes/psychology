@@ -36,14 +36,15 @@ class TestsController < ApplicationController
     end
 
     def demographics
-        data = ::Test.new(
+        new_test = ::Test.new(
             test_type: params.require(:key),
             age: params.require(:age),
             gender: params.require(:gender),
             user_id: current_user.id,
+            data: {},
         )
-        data.save!
-        redirect_to data.url and return
+        new_test.save!
+        redirect_to new_test.url and return
     end
 
 
@@ -53,4 +54,27 @@ class TestsController < ApplicationController
             redirect_to '/lab' and return
         end
     end
+
+    def add_word
+        @test = Test.find_by(id: params[:id].to_i, user_id: current_user.id)
+        unless @test
+            redirect_to '/lab' and return
+        end
+        p '^^^'
+        p params
+        @test.data[params.require(:stage)] ||= []
+        @test.data[params.require(:stage)] >> params.require(:word)
+        @test.save!
+    end
+
+    def delete_entry
+        @test = Test.find_by(id: params[:id].to_i, user_id: current_user.id)
+        unless @test
+            redirect_to '/lab' and return
+        end
+        @test.data[params.require(:stage)].delete(params.require(:word))
+        @test.save!
+        # this needs to trigger hotwire
+    end
+  
 end

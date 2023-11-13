@@ -1,1 +1,13 @@
-test will be here someday
+<div class="card">
+
+    <% case @test.test_type
+       when "fluency" %>
+        <%= render template: "tests/_fluency_test" %>
+    <% else %>
+    
+        <p>unimp</p>
+    <% end %>
+
+
+
+</div>

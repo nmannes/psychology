@@ -34,9 +34,8 @@ css:
   }
 
 div.content
-  -10.times do 
-    - @test_types.each do |test|
-      = link_to test[:url]
-        div.test-card
-          p
-            = test[:name]
+  - @test_types.each do |test|
+    = link_to test[:url]
+      div.test-card
+        p
+          = test[:name]

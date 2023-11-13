@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   
   get '/lab' => 'tests#show'
   get '/lab/begin' => 'tests#begin'
+  
   post '/lab/begin' => 'tests#demographics'
+  
+  get '/lab/test/:id' => 'tests#conduct'
+  post 'lab/test/:id' => 'test#add_word'
+  delete 'lab/test/:id' => 'tests#delete_entry'
 
-  get '/lab/test/:id', to: 'tests#conduct'
 end
