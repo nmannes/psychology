@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/lab/begin' => 'tests#demographics'
   
   get '/lab/test/:id' => 'tests#conduct'
-  post 'lab/test/:id' => 'test#add_word'
+  post 'lab/test/:id' => 'tests#add_word'
   delete 'lab/test/:id' => 'tests#delete_entry'
 
 end

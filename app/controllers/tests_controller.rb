@@ -60,11 +60,12 @@ class TestsController < ApplicationController
         unless @test
             redirect_to '/lab' and return
         end
-        p '^^^'
-        p params
         @test.data[params.require(:stage)] ||= []
-        @test.data[params.require(:stage)] >> params.require(:word)
+        @test.data[params.require(:stage)] << params.require(:word).downcase
+        @test.data[params.require(:stage)] = @test.data[params.require(:stage)].uniq 
         @test.save!
+        
+        render 'tests/_fluency_test'
     end
 
     def delete_entry
@@ -75,6 +76,9 @@ class TestsController < ApplicationController
         @test.data[params.require(:stage)].delete(params.require(:word))
         @test.save!
         # this needs to trigger hotwire
+        # do the hotwire
+
+        render 'tests/_fluency_test'
     end
   
 end

@@ -1,19 +1,25 @@
-<h1>Benton Verbal Fluency Test</h1>
+<%= turbo_frame_tag :fluency_form do %>
+    <div>
+        <h1>Benton Verbal Fluency Test</h1>
 
-<h2>Instructions: <span><%= @test.instructions %></span></h2>
+        <h2>Instructions: <span><%= @test.instructions %></span></h2>
 
-<% if !@test.current_list.blank? %>
-    <h3> You've already said these animals: </h3>
-<% end %>
+        <% if !@test.current_list.blank? %>
+            <h3> You've already said these animals: </h3>
+        <% end %>
 
-<% @test.current_list.each_with_index do |item, i| %>
-<p> 
-    <%= item %> 
-        <span> 
+        <% @test.current_list.each_with_index do |item, i| %>
+        <div>
+            <p> 
+                <%= item %> 
+            </p>
             <%= render partial: "tests/delete_entry_fluency_test",
                        :locals => { :stage => @test.current_stage, :word => item } %>
-</span></p>
-<% end %>
+        </div>
+        <% end %>
 
-<%= render partial: "tests/add_entry_fluency_test",
-           :locals => { :stage => @test.current_stage } %>
+        <%= render partial: "tests/add_entry_fluency_test",
+                   :locals => { :stage => @test.current_stage } %>
+
+    </div>
+<% end %>

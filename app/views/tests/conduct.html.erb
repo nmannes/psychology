@@ -2,7 +2,7 @@
 
     <% case @test.test_type
        when "fluency" %>
-        <%= render template: "tests/_fluency_test" %>
+        <%= render partial: "tests/fluency_test" %>
     <% else %>
     
         <p>unimp</p>
