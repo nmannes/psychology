@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: tests
@@ -11,7 +13,7 @@
 #  data       :json
 #  user_id    :integer          not null
 #
-require "test_helper"
+require 'test_helper'
 
 class TestTest < ActiveSupport::TestCase
   # test "the truth" do

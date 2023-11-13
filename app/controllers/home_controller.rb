@@ -1,8 +1,9 @@
-class HomeController < ApplicationController
-    def index
-    end
+# frozen_string_literal: true
 
-    def logout
-        redirect_to '/'
-    end
+class HomeController < ApplicationController
+  def index; end
+
+  def logout
+    redirect_to '/'
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -17,10 +19,10 @@
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  devise :database_authenticatable, 
-    :registerable,
-    :recoverable, 
-    :rememberable, 
-    :validatable, 
-    :confirmable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :validatable,
+         :confirmable
 end
