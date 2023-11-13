@@ -34,7 +34,7 @@ class TestsController < ApplicationController
         'No schooling completed', 
         'Nursery school to 8th grade', 
         'Some high school, no diploma',
-        'High school graduate, diploma or the equivalent (for example: GED)', 
+        'High school graduate, diploma or GED', 
         'Some college credit, no degree',
         'Trade/technical/vocational training',
         'Associate degree', 
