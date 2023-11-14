@@ -17,7 +17,7 @@
                 <h3> You've already said these animals: </h3>
             <% end %>
 
-            <% @test.current_list.each_with_index do |item, i| %>
+            <% @test.current_list.reverse do |item| %>
             <div class="row-entry">
                 <p> 
                     <%= item %> 
