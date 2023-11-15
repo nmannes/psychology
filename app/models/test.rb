@@ -50,6 +50,33 @@ class Test < ApplicationRecord
     }[current_stage]
   end
 
+
+  def add_word(stage, word)
+    if test_type == 'fluency'
+      data["#{stage}_start_ts"] ||= Time.now
+      if word.present?
+        data[stage] ||= []
+        data[stage] << word.downcase
+        data[stage] = data[stage].uniq
+      end
+      save!
+    else
+      # add word but for the other sort of test
+    end
+  end
+
+  def delete_word(stage, word)
+    data[stage].delete(word)
+    save!
+  end
+
+  def template
+    if test_type == 'fluency'
+      'tests/_fluency_test'
+    else
+    end
+  end
+
   def current_list
     data[current_stage]
   end

@@ -71,27 +71,17 @@ class TestsController < ApplicationController
     @test = Test.find_by(id: params[:id].to_i, user_id: current_user.id)
     redirect_to '/lab' and return unless @test
 
-    stage = params.require(:stage)
-
-    @test.data["#{stage}_start_ts"] ||= Time.now
-
-    if params[:word].present?
-      @test.data[stage] ||= []
-      @test.data[stage] << params.require(:word).downcase
-      @test.data[stage] = @test.data[stage].uniq
-    end
-
-    @test.save!
-    render 'tests/_fluency_test'
+    @test.add_word(params.require(:stage), params[:word])
+    
+    render @test.template
   end
 
   def delete_entry
     @test = Test.find_by(id: params[:id].to_i, user_id: current_user.id)
     redirect_to '/lab' and return unless @test
 
-    @test.data[params.require(:stage)].delete(params.require(:word))
-    @test.save!
+    @test.delete_entry(params.require(:stage), params.require(:word))
 
-    render 'tests/_fluency_test'
+    render @test.template
   end
 end
