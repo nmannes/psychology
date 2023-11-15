@@ -8,7 +8,8 @@ class CreateTests < ActiveRecord::Migration[7.0]
       t.integer :age
       t.string :gender
       t.string :education
-      t.json :data
+      t.string :stages, :text, array: true, default: []
+      t.json :data, default: {}
       t.references :user, null: false, foreign_key: true
     end
   end

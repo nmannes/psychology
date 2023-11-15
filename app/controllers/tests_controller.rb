@@ -54,7 +54,6 @@ class TestsController < ApplicationController
       age: params.require(:age),
       gender: params.require(:gender),
       user_id: current_user.id,
-      data: {}
     )
     new_test.save!
     redirect_to new_test.url and return

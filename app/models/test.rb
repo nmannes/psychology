@@ -18,15 +18,6 @@ class Test < ApplicationRecord
     "/lab/test/#{id}"
   end
 
-  def stages
-    case test_type
-    when 'fluency'
-      %w[animal f s]
-    else
-      ['unimplemented']
-    end
-  end
-
   def current_stage
     stages.find do |s|
       ts_key = "#{s}_start_ts"
