@@ -5,29 +5,35 @@
         <div>
             <h1>Benton Verbal Fluency Test</h1>
             
-            <h2>Instructions: <span><%= @test.instructions %></span></h2>
+            <h2>
+                Stage: 
+                <span><%= @test.instructions %></span>
+            </h2>
+
             <% if @test.curr_stage_start_time %>
-            <h3> Test started at <%= @test.curr_stage_start_time %> </h3>
+                <h3> Test started at <%= @test.curr_stage_start_time %> </h3>
+
+                <%= render partial: "tests/add_entry_fluency_test",
+                           :locals => { :stage => @test.current_stage, :begin_button => false } %>
+
+                <% if @test.current_list.present? %>
+                    <h3> You've already said: </h3>
+
+                    <% @test.current_list.reverse.each do |item| %>
+                        <div class="row-entry">
+                            <p> 
+                                <%= item %> 
+                            </p>
+                            <%= render partial: "tests/delete_entry_fluency_test",
+                                       :locals => { :stage => @test.current_stage, :word => item } %>
+                        </div>
+                    <% end %>
+                <% end %>
+            <% else %>
+                
+             <%= render partial: "tests/add_entry_fluency_test",
+                        :locals => { :stage => @test.current_stage, :begin_button => true } %>
             <% end %>
-
-            <%= render partial: "tests/add_entry_fluency_test",
-                       :locals => { :stage => @test.current_stage } %>
-
-            <% if !@test.current_list.blank? %>
-                <h3> You've already said these animals: </h3>
-            <% end %>
-
-            <% @test.current_list.reverse do |item| %>
-            <div class="row-entry">
-                <p> 
-                    <%= item %> 
-                </p>
-                <%= render partial: "tests/delete_entry_fluency_test",
-                           :locals => { :stage => @test.current_stage, :word => item } %>
-            </div>
-            <% end %>
-
-
         </div>
     <% end %>
 <% end %>

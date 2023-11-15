@@ -30,7 +30,7 @@ class Test < ApplicationRecord
   def current_stage
     stages.find do |s|
       ts_key = "#{s}_start_ts"
-      s if !data.key?(ts_key) || Time.now - Time.new(data[ts_key]) < 1.minute
+      s if !data.key?(ts_key) || Time.now - data[ts_key].to_time < 1.minute
     end
   end
 
@@ -51,6 +51,6 @@ class Test < ApplicationRecord
   end
 
   def current_list
-    data[current_stage] || []
+    data[current_stage]
   end
 end

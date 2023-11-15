@@ -1,7 +1,17 @@
 
+
+<% unless begin_button %>
   <%= form_with url: "/lab/test/#{@test.id}", method: :post do |form| %>
     <%= form.label :word, "New word" %>
     <%= form.text_field :word, autofocus: true %>
     <%= form.hidden_field :stage, value: stage %>
     <%= form.submit "Say" %>
   <% end %>
+
+<% else %>
+  <%= form_with url: "/lab/test/#{@test.id}", method: :post do |form| %>
+      <%= form.hidden_field :word, value: "" %>
+      <%= form.hidden_field :stage, value: stage %>
+      <%= form.submit "Begin Stage" %>
+    <% end %>
+<% end %>
