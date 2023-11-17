@@ -1,13 +1,3 @@
 <div class="card">
-
-    <% case @test.test_type
-       when "fluency" %>
-        <%= render partial: "tests/fluency_test" %>
-    <% else %>
-    
-        <p>unimp</p>
-    <% end %>
-
-
-
+    <%= render template: @test.template %>
 </div>

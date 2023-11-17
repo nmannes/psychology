@@ -54,7 +54,8 @@ class TestsController < ApplicationController
       age: params.require(:age),
       gender: params.require(:gender),
       user_id: current_user.id,
-      stages: [params.require(:variant), 'f','s']
+      stages: get_stages(params.require(:key), params[:variant]),
+      data: get_data(params.require(:key))
     )
     new_test.save!
     redirect_to new_test.url and return
@@ -83,5 +84,27 @@ class TestsController < ApplicationController
     @test.delete_entry(params.require(:stage), params.require(:word))
 
     render @test.template
+  end
+
+
+  private
+
+  def get_stages(test_type, input)
+    if test_type == 'fluency' 
+      [input || 'animal', 'f','s']
+    elsif test_type == 'memory'
+      (1..8).map(&:to_s)
+    end
+  end
+
+  def get_data(test_type)
+    if test_type == 'memory'
+      { 
+        :w1 => %w[drum curtain bell coffee school parent moon garden hat farmer nose turkey color house river],
+        :w2 => %w[desk ranger bird shoe stove mountain glasses towel cloud boat lamb gun pencil church fish] 
+      }
+    else
+      {}
+    end
   end
 end

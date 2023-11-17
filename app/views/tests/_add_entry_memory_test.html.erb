@@ -1,0 +1,5 @@
+<%= form_with url: "/lab/test/#{@test.id}", method: :post do |form| %>
+    <%= form.hidden_field :stage, value: stage %>
+    <%= form.hidden_field :word, value: word %>  
+    <%= form.submit "#{word}" %>
+<% end %>
