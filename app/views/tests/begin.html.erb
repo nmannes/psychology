@@ -10,11 +10,21 @@
       <div>
         <%= form.label :gender, "Gender:" %>
         <%= form.select :gender, ["Man", "Woman", "Non-binary"] %>
-       </div>
-       <div>
+      </div>
+      <div>
          <%= form.label :education, "Level of education:" %>
         <%= form.select :education, @education_levels %>
       </div>
+      <% if params.require(:key) == "fluency" %>
+      <div>
+        <p> Test Variant:</p>
+        <%= form.radio_button :variant, "animal", :checked => true %>
+        <%= form.label :variant_animal, "Animals" %>
+        <%= form.radio_button :variant, "supermarket" %>
+        <%= form.label :variant_supermarket, "Supermarket" %>
+
+      </div>
+      <% end %>
     <%= form.hidden_field :key, value: params.require(:key) %>
       <div>
         <%= form.submit "Begin Test" %>

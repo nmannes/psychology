@@ -19,7 +19,7 @@ class Test < ApplicationRecord
   end
 
   def current_stage
-    stages.find do |s|
+    JSON.parse(stages).find do |s|
       ts_key = "#{s}_start_ts"
       s if !data.key?(ts_key) || Time.now - data[ts_key].to_time < 1.minute
     end
@@ -36,6 +36,7 @@ class Test < ApplicationRecord
   def instructions
     {
       'animal' => 'List as many animals as you can',
+      'supermarket' => 'List as many supermarket-related words as you can',
       'f' => 'List as many words beginning with the letter \'F\' as you can',
       's' => 'List as many words beginning with the letter \'S\' as you can'
     }[current_stage]
@@ -52,7 +53,7 @@ class Test < ApplicationRecord
       end
       save!
     else
-      # add word but for the other sort of test
+      # add word but for other sort of test
     end
   end
 
