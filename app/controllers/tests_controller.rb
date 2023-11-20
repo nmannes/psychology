@@ -107,13 +107,6 @@ class TestsController < ApplicationController
   end
 
   def get_data(test_type)
-    if test_type == 'memory'
-      { 
-        :w1 => %w[drum curtain bell coffee school parent moon garden hat farmer nose turkey color house river],
-        :w2 => %w[desk ranger bird shoe stove mountain glasses towel cloud boat lamb gun pencil church fish] 
-      }
-    else
-      {}
-    end
+   {}
   end
 end

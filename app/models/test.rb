@@ -98,4 +98,12 @@ class Test < ApplicationRecord
   def current_list
     data[current_stage]
   end
+
+  def memory_test_w1
+    %w[drum curtain bell coffee school parent moon garden hat farmer nose turkey color house river]
+  end
+
+  def memory_test_w2
+    %w[desk ranger bird shoe stove mountain glasses towel cloud boat lamb gun pencil church fish] 
+  end
 end
