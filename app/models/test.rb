@@ -36,7 +36,7 @@ class Test < ApplicationRecord
   end
 
   def completed?
-    current_stage.nil?
+    current_stage.nil? || current_stage == 'completed'
   end
 
   def curr_stage_start_time
