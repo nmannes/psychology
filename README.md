@@ -1,24 +1,17 @@
-# README
+# Psychology
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## This is an app where I implement a user interface to for a professional to administer assorted niche psychological exams that track the breakdown of elderly folks.
 
-Things you may want to cover:
+* Benton Verbal Fluency Test (needs to make it look a bit better)
+* Auditory Verbal Learning Test (need to implement stages 7, 8)
+* Trail Making Test (need to start)
 
-* Ruby version
+## Other useful info
 
-* System dependencies
+* Ruby version: 3.2.2
 
-* Configuration
-
-* Database creation
+* Database creation: for now we are using sqlite, with PostgreSQL to come
 
 * Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`bin/rails db:migrate RAILS_ENV=development`
