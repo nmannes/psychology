@@ -131,7 +131,7 @@ a {
 }
 
 
-.primary {
+.primary, .secondary{
   input {
     padding: 16px;
     width: 100px;
@@ -139,14 +139,32 @@ a {
     text-align: center;
     color: whitesmoke;
     border-radius: 8px;
-    background-color: blue;
   }
   input:hover {
     background-color: whitesmoke;
-    color: blue;
     cursor: pointer;
   }
 }
+
+.primary {
+  input{
+    background-color: blue;
+  }
+  input:hover {
+     color: blue;
+  }
+}
+
+.secondary {
+  input{
+    background-color: red;
+  }
+  input:hover {
+     color: red;
+  }
+}
+
+
 
 .multiline-flex {
   display: flex;

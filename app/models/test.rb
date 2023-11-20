@@ -51,7 +51,7 @@ class Test < ApplicationRecord
       's' => 'List as many words beginning with the letter \'S\' as you can',
     }
     (1..8).each do |n|
-      h[n.to_s] = 'Some words will be read to you. Please list back as many as you can, in any order'
+      h[n.to_s] = 'Some words [the blue list] will be read to you. Please list back as many as you can, in any order'
     end
     
     h[current_stage]
@@ -99,11 +99,28 @@ class Test < ApplicationRecord
     data[current_stage]
   end
 
-  def memory_test_w1
+  def primary_words
+    if current_stage == '5'
+      w2
+    else
+      w1
+    end
+  end
+
+  def secondary_words 
+    return if current_stage < '5'
+    if current_stage == '5'
+      w1
+    else
+      w2
+    end
+  end
+
+  def w1
     %w[drum curtain bell coffee school parent moon garden hat farmer nose turkey color house river]
   end
 
-  def memory_test_w2
+  def w2
     %w[desk ranger bird shoe stove mountain glasses towel cloud boat lamb gun pencil church fish] 
   end
 end

@@ -14,8 +14,23 @@
             </h2>
             <div class="flex-row">
                 <div class="multiline-flex" style="width: 65vw;">
-                    <%= render partial: "tests/primary_words_memory_test",
-                               :locals => { :stage => @test.current_stage, :words => @test.data["w1"] } %>
+                    <%= render partial: "tests/words_memory_test",
+                               :locals => {
+                                 :styling => "primary",
+                                 :stage => @test.current_stage,
+                                 :words => @test.primary_words,
+                               } %>
+                    <% if @test.secondary_words %>
+                        <br>
+
+                        <%= render partial: "tests/words_memory_test",
+                                   :locals => {
+                                     :styling => "secondary",
+                                     :stage => @test.current_stage,
+                                     :words => @test.secondary_words,
+                                   } %>
+                    <% end %>
+                    
                 </div>
 
                 <div class="multicol-flex">
