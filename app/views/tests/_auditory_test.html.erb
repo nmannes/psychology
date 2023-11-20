@@ -6,9 +6,10 @@
 <% else %>
   <%= turbo_frame_tag :auditory_form do %>
     <div>
-      <h1>Auditory Learning Test. Stage <%= @test.current_stage_number %> of 8
-        <span> <%= render partial: "tests/next_stage_auditory_test",
-                              :locals => { :stage => @test.current_stage } %></span></h1>
+      <h1 class="center">Auditory Verbal Learning Test</h1>
+      <h1 class="center">Stage <%= @test.current_stage_number %> of 8</h1>
+      <span> <%= render partial: "tests/next_stage_auditory_test",
+                              :locals => { :stage => @test.current_stage } %></span>
       <div class="flex-row">
         <div class="half-multiline-flex">
           <h2>
