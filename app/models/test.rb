@@ -86,8 +86,12 @@ class Test < ApplicationRecord
     save!
   end
 
-  def delete_word(stage, word)
-    data[stage].delete(word)
+  def delete_word(stage, word, index)
+    if index 
+      data[stage].delete_at(index.to_i)
+    else
+      data[stage].delete(word)
+    end
     save!
   end
 

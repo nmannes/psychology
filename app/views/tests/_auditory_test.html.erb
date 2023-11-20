@@ -1,51 +1,41 @@
 <% if @test.completed? %>
-    <p> Test completed</p>
+  <p> Test completed</p>
+<% elsif @test.current_stage >= "7" %>
+  <%= turbo_frame_tag :auditory_form do %>
+  <% end %>
 <% else %>
-    <%= turbo_frame_tag :fluency_form do %>
-        <div>
-            <h1>auditory Test. Stage <%= @test.current_stage_number %> of <%= @test.num_stages %>
-            
-            <span> <%= render partial: "tests/next_stage_auditory_test",
+  <%= turbo_frame_tag :auditory_form do %>
+    <div>
+      <h1>Auditory Learning Test. Stage <%= @test.current_stage_number %> of 8
+        <span> <%= render partial: "tests/next_stage_auditory_test",
                               :locals => { :stage => @test.current_stage } %></span></h1>
-            
-            <h2>
-                Patient instructions: 
-                <span><%= @test.instructions %></span>
-            </h2>
-            <div class="flex-row">
-                <div class="multiline-flex" style="width: 65vw;">
-                    <%= render partial: "tests/words_auditory_test",
+      <div class="flex-row">
+        <div class="half-multiline-flex">
+          <h2>
+            <%= @test.instructions %>
+          </h2>
+          <%= render partial: "tests/words_auditory_test",
                                :locals => {
-                                 :styling => "primary",
+                                   :styling => "primary",
                                  :stage => @test.current_stage,
                                  :words => @test.primary_words,
                                } %>
-                    <% if @test.secondary_words %>
-                        <br>
-
-                        <%= render partial: "tests/words_auditory_test",
+          <% if @test.secondary_words %>
+            <%= render partial: "tests/words_auditory_test",
                                    :locals => {
-                                     :styling => "secondary",
+                                       :styling => "secondary",
                                      :stage => @test.current_stage,
                                      :words => @test.secondary_words,
                                    } %>
-                    <% end %>
-                    
-                </div>
-
-                <div class="multicol-flex">
-                    <% @test.current_list && @test.current_list.reverse.each do |item| %>
-                        <div class="row-entry">
-                            <p> 
-                                <%= item %> 
-                            </p>
-                            <%= render partial: "tests/delete_entry_auditory_test",
-                                       :locals => { :stage => @test.current_stage, :word => item } %>
-                        </div>
-                    <% end %>
-                </div>
-            </div>
-
+          <% end %>
         </div>
-    <% end %>
+        <div class="half-multiline-flex">
+          <% @test.current_list && @test.current_list.each_with_index do |item, i| %>
+            <%= render partial: "tests/delete_entry_auditory_test",
+                                       :locals => { :stage => @test.current_stage, :word => item, :index => i } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>

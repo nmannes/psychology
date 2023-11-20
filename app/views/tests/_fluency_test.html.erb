@@ -1,39 +1,33 @@
 <% if @test.completed? %>
-    <p> test completed</p>
+  <p> test completed</p>
 <% else %>
-    <%= turbo_frame_tag :fluency_form do %>
-        <div>
-            <h1>Benton Verbal Fluency Test</h1>
-            
-            <h2>
-                Stage: 
-                <span><%= @test.instructions %></span>
-            </h2>
-
-            <% if @test.curr_stage_start_time %>
-                <h3> Test started at <%= @test.curr_stage_start_time %> </h3>
-
-                <%= render partial: "tests/add_entry_fluency_test",
+  <%= turbo_frame_tag :fluency_form do %>
+    <div>
+      <h1>Benton Verbal Fluency Test</h1>
+      <h2>
+        Stage: 
+        <span><%= @test.instructions %></span>
+      </h2>
+      <% if @test.curr_stage_start_time %>
+        <h3> Test started at <%= @test.curr_stage_start_time %> </h3>
+        <%= render partial: "tests/add_entry_fluency_test",
                            :locals => { :stage => @test.current_stage, :begin_button => false } %>
-
-                <% if @test.current_list.present? %>
-                    <h3> You've already said: </h3>
-
-                    <% @test.current_list.reverse.each do |item| %>
-                        <div class="row-entry">
-                            <p> 
-                                <%= item %> 
-                            </p>
-                            <%= render partial: "tests/delete_entry_fluency_test",
+        <% if @test.current_list.present? %>
+          <h3> You've already said: </h3>
+          <% @test.current_list.reverse.each do |item| %>
+            <div class="row-entry">
+              <p>
+                <%= item %>
+              </p>
+              <%= render partial: "tests/delete_entry_fluency_test",
                                        :locals => { :stage => @test.current_stage, :word => item } %>
-                        </div>
-                    <% end %>
-                <% end %>
-            <% else %>
-
-             <%= render partial: "tests/add_entry_fluency_test",
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= render partial: "tests/add_entry_fluency_test",
                         :locals => { :stage => @test.current_stage, :begin_button => true } %>
-            <% end %>
-        </div>
-    <% end %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>

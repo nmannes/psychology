@@ -1,6 +1,5 @@
-
-  <%= form_with url: "/lab/test/#{@test.id}", method: :delete do |form| %>
-    <%= form.hidden_field :stage, value: stage %>
-    <%= form.hidden_field :word, value: word %>
-    <%= form.submit "delete" %>
-  <% end %>
+<%= form_with url: "/lab/test/#{@test.id}", method: :delete do |form| %>
+  <%= form.hidden_field :stage, value: stage %>
+  <%= form.hidden_field :word, value: word %>
+  <%= form.submit "delete" %>
+<% end %>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   post '/lab/begin' => 'tests#demographics'
 
+  get '/tests' => 'tests#list'
   get '/lab/test/:id' => 'tests#conduct'
   post 'lab/test/:id' => 'tests#add_word'
   put 'lab/test/:id' => 'tests#next_stage'

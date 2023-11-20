@@ -87,6 +87,7 @@ a {
 
 .center-container{
   width: 100%;
+  min-height: calc(100vh - 75px - 60px);
   display: flex;
   justify-content: center;
   background-color: #CCFFFF;
@@ -107,6 +108,7 @@ a {
 }
 
 .flex-row {
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -131,14 +133,15 @@ a {
 }
 
 
-.primary, .secondary{
+.primary, .secondary, .delete{
   input {
     padding: 16px;
     width: 100px;
     font-size: large;
     text-align: center;
     color: whitesmoke;
-    border-radius: 8px;
+    border-radius: 12px;
+    border: 2px solid black;
   }
   input:hover {
     background-color: whitesmoke;
@@ -152,6 +155,7 @@ a {
   }
   input:hover {
      color: blue;
+     border: 2px solid blue;
   }
 }
 
@@ -161,24 +165,34 @@ a {
   }
   input:hover {
      color: red;
+     border: 2px solid red;
+
+  }
+}
+
+.delete {
+  input{
+    background-color: green;
+  }
+  input:hover {
+     color: green;
+     border: 2px solid red;
+     content:'UNDO';
+
   }
 }
 
 
 
-.multiline-flex {
+.half-multiline-flex {
+  margin: 16px;
+  width: 50%;
   display: flex;
   flex-direction: row;
   gap: 16px;
   flex-wrap: wrap;
 }
 
-.multicol-flex {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  flex-wrap: wrap;
-}
 
 /* ================================= 
   Media Queries
