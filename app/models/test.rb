@@ -26,7 +26,7 @@ class Test < ApplicationRecord
           ts_key = "#{s}_start_ts"
           s if !data.key?(ts_key) ||  Time.now - data[ts_key].to_time < 1.minute
       end
-    elsif test_type == 'memory'
+    elsif test_type == 'auditory'
       es = data['ended_stages']
       return parsed_stages.first if es.nil?
       parsed_stages.find do |s|

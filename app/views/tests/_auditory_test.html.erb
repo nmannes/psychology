@@ -3,9 +3,9 @@
 <% else %>
     <%= turbo_frame_tag :fluency_form do %>
         <div>
-            <h1>Memory Test. Stage <%= @test.current_stage_number %> of <%= @test.num_stages %>
+            <h1>auditory Test. Stage <%= @test.current_stage_number %> of <%= @test.num_stages %>
             
-            <span> <%= render partial: "tests/next_stage_memory_test",
+            <span> <%= render partial: "tests/next_stage_auditory_test",
                               :locals => { :stage => @test.current_stage } %></span></h1>
             
             <h2>
@@ -14,7 +14,7 @@
             </h2>
             <div class="flex-row">
                 <div class="multiline-flex" style="width: 65vw;">
-                    <%= render partial: "tests/words_memory_test",
+                    <%= render partial: "tests/words_auditory_test",
                                :locals => {
                                  :styling => "primary",
                                  :stage => @test.current_stage,
@@ -23,7 +23,7 @@
                     <% if @test.secondary_words %>
                         <br>
 
-                        <%= render partial: "tests/words_memory_test",
+                        <%= render partial: "tests/words_auditory_test",
                                    :locals => {
                                      :styling => "secondary",
                                      :stage => @test.current_stage,
@@ -39,7 +39,7 @@
                             <p> 
                                 <%= item %> 
                             </p>
-                            <%= render partial: "tests/delete_entry_memory_test",
+                            <%= render partial: "tests/delete_entry_auditory_test",
                                        :locals => { :stage => @test.current_stage, :word => item } %>
                         </div>
                     <% end %>

@@ -5,7 +5,7 @@ class TestsController < ApplicationController
 
   TESTS = {
     'fluency' => 'Benton Verbal Fluency Test',
-    'memory' => 'Rey Auditory Verbal Learning Test',
+    'auditory' => 'Rey Auditory Verbal Learning Test',
     'trail' => 'Trail Making Test'
   }.freeze
 
@@ -17,7 +17,7 @@ class TestsController < ApplicationController
       },
       {
         name: 'Rey Auditory Verbal Learning Test',
-        url: '/lab/begin?key=memory'
+        url: '/lab/begin?key=auditory'
       },
       {
         name: 'Trail Making Test',
@@ -101,7 +101,7 @@ class TestsController < ApplicationController
   def get_stages(test_type, input)
     if test_type == 'fluency' 
       [input || 'animal', 'f','s']
-    elsif test_type == 'memory'
+    elsif test_type == 'auditory'
       (1..8).map(&:to_s)
     end
   end
