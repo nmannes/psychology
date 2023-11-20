@@ -100,16 +100,28 @@ a {
   border: 1px solid black;
 }
 
-.form-container {
+.flex-column {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+
+.row-entry.input {
+  width: 60px;
+  padding: 16px;
+  background-color: blue;
+}
+
 
 .row-entry {
   display: flex;
-  width: 70%;
   margin: auto;
   flex-direction: row;
   justify-content: space-between;
@@ -117,6 +129,39 @@ a {
     margin: 0;
   }
 }
+
+
+.primary {
+  input {
+    padding: 16px;
+    width: 100px;
+    font-size: large;
+    text-align: center;
+    color: whitesmoke;
+    border-radius: 8px;
+    background-color: blue;
+  }
+  input:hover {
+    background-color: whitesmoke;
+    color: blue;
+    cursor: pointer;
+  }
+}
+
+.multiline-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.multicol-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 /* ================================= 
   Media Queries
 ==================================== */

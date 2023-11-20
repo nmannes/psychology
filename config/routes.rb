@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   get '/lab/test/:id' => 'tests#conduct'
   post 'lab/test/:id' => 'tests#add_word'
+  put 'lab/test/:id' => 'tests#next_stage'
   delete 'lab/test/:id' => 'tests#delete_entry'
 end

@@ -81,11 +81,20 @@ class TestsController < ApplicationController
     @test = Test.find_by(id: params[:id].to_i, user_id: current_user.id)
     redirect_to '/lab' and return unless @test
 
-    @test.delete_entry(params.require(:stage), params.require(:word))
+    @test.delete_word(params.require(:stage), params.require(:word))
 
     render @test.template
   end
 
+
+  def next_stage
+    @test = Test.find_by(id: params[:id].to_i, user_id: current_user.id)
+    redirect_to '/lab' and return unless @test
+
+    @test.next_stage(params.require(:current_stage))
+
+    render @test.template
+  end
 
   private
 

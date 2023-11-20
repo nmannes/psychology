@@ -19,9 +19,19 @@ class Test < ApplicationRecord
   end
 
   def current_stage
-    JSON.parse(stages).find do |s|
-        ts_key = "#{s}_start_ts"
-        s if !data.key?(ts_key) || (test_type == 'fluency' && Time.now - data[ts_key].to_time < 1.minute)
+    parsed_stages = JSON.parse(stages)
+    
+    if test_type == 'fluency'
+      parsed_stages.find do |s|
+          ts_key = "#{s}_start_ts"
+          s if !data.key?(ts_key) ||  Time.now - data[ts_key].to_time < 1.minute
+      end
+    elsif test_type == 'memory'
+      es = data['ended_stages']
+      return parsed_stages.first if es.nil?
+      parsed_stages.find do |s|
+        !es.include?(s)
+      end || 'completed'
     end
   end
 
@@ -34,18 +44,32 @@ class Test < ApplicationRecord
   end
 
   def instructions
-    {
+    h = {
       'animal' => 'List as many animals as you can',
       'supermarket' => 'List as many supermarket-related words as you can',
       'f' => 'List as many words beginning with the letter \'F\' as you can',
       's' => 'List as many words beginning with the letter \'S\' as you can',
-      '1' => 'A few words will be read to you. Please name as many back as you can, in any order'
-    }[current_stage]
+    }
+    (1..8).each do |n|
+      h[n.to_s] = 'Some words will be read to you. Please list back as many as you can, in any order'
+    end
+    
+    h[current_stage]
   end
 
 
+  def current_stage_number
+    (JSON.parse(stages).index(current_stage) || 0) + 1
+  end
+
+  def num_stages
+    JSON.parse(stages).count
+  end
+
   def add_word(stage, word)
-    data["#{stage}_start_ts"] ||= Time.now
+    if test_type == 'fluency'
+      data["#{stage}_start_ts"] ||= Time.now
+    end
     if word.present?
       data[stage] ||= []
       data[stage] << word.downcase
@@ -54,6 +78,12 @@ class Test < ApplicationRecord
       end
       save!
     end
+  end
+
+  def next_stage(stage)
+    data['ended_stages'] ||= []
+    data['ended_stages'] << stage
+    save!
   end
 
   def delete_word(stage, word)
