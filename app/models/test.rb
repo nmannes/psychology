@@ -18,11 +18,6 @@ class Test < ApplicationRecord
     "/lab/test/#{id}"
   end
 
-  def stages
-
-  end
-
-
   def current_stage
     
     if test_type == 'fluency'
@@ -138,5 +133,13 @@ class Test < ApplicationRecord
 
   def w2
     %w[desk ranger bird shoe stove mountain glasses towel cloud boat lamb gun pencil church fish] 
+  end
+
+  def stage7_list
+    (1..10).map(&:to_s)
+  end
+
+  def stage_7_curr_word
+    stage7_list[data['7']&.count || 0]
   end
 end

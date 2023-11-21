@@ -103,6 +103,8 @@ a {
   width: fit-content;
   border-radius: 16px;
   border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px;
+
 }
 
 .flex-column {
@@ -140,7 +142,7 @@ a {
 .primary, .secondary, .delete{
   input {
     padding: 16px;
-    width: 100px;
+    min-width: fit-content;
     font-size: large;
     text-align: center;
     color: whitesmoke;
@@ -197,6 +199,10 @@ a {
   flex-wrap: wrap;
 }
 
+.stage-7 {
+  min-height: 50vh;
+  min-width: 60vw;
+}
 
 /* ================================= 
   Media Queries

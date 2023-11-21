@@ -100,6 +100,12 @@ class TestsController < ApplicationController
     render @test.template
   end
 
+
+  def stage7
+    @test = Test.find_by(id: params[:id].to_i, user_id: current_user.id)
+    redirect_to '/lab' and return unless @test
+  end
+
   private
 
   def get_data(test_type)

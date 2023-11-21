@@ -1,1 +1,17 @@
-
+<div class="card">
+  <div class="stage-7">
+    <h1 class="center"> Stage 7 of 8 </h1>
+    <% if @test.stage_7_curr_word %>
+      <h2 class="center"> <%= @test.stage_7_curr_word%> </h2>
+      <div class="flex-row">
+        <% ['first set', 'second set', 'neither'].each do |w| %>
+          <div class="primary">
+            <%= render partial: "tests/auditory/add_entry", :locals => { :stage => '7', :word => w } %>
+          </div>
+        <% end %>
+      </div>
+    <% else%>
+      <%= render partial: "tests/auditory/next_stage", :locals => {:stage => '7' }%>
+    <% end %>
+  </div>
+</div>
