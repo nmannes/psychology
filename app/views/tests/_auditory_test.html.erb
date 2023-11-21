@@ -1,28 +1,33 @@
 <% if @test.completed? %>
   <p> Test completed</p>
-<% elsif @test.current_stage >= "7" %>
+<% elsif @test.current_stage == "7" %>
   <%= turbo_frame_tag :auditory_form do %>
+    <%= render partial: "tests/auditory/stage_7"%>
+  <% end %>
+<% elsif @test.current_stage == "8" %>
+  <%= turbo_frame_tag :auditory_form do %>
+    <%= render partial: "tests/auditory/stage_8"%>
   <% end %>
 <% else %>
   <%= turbo_frame_tag :auditory_form do %>
     <div>
       <h1 class="center">Auditory Verbal Learning Test</h1>
       <h1 class="center">Stage <%= @test.current_stage_number %> of 8</h1>
-      <span> <%= render partial: "tests/next_stage_auditory_test",
+      <span> <%= render partial: "tests/auditory/next_stage",
                               :locals => { :stage => @test.current_stage } %></span>
       <div class="flex-row">
         <div class="half-multiline-flex">
           <h2>
             <%= @test.instructions %>
           </h2>
-          <%= render partial: "tests/words_auditory_test",
+          <%= render partial: "tests/auditory/words",
                                :locals => {
                                    :styling => "primary",
                                  :stage => @test.current_stage,
                                  :words => @test.primary_words,
                                } %>
           <% if @test.secondary_words %>
-            <%= render partial: "tests/words_auditory_test",
+            <%= render partial: "tests/auditory/words",
                                    :locals => {
                                        :styling => "secondary",
                                      :stage => @test.current_stage,
@@ -32,7 +37,7 @@
         </div>
         <div class="half-multiline-flex">
           <% @test.current_list && @test.current_list.each_with_index do |item, i| %>
-            <%= render partial: "tests/delete_entry_auditory_test",
+            <%= render partial: "tests/auditory/delete_entry",
                                        :locals => { :stage => @test.current_stage, :word => item, :index => i } %>
           <% end %>
         </div>

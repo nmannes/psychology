@@ -18,8 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_161213) do
     t.integer "age"
     t.string "gender"
     t.string "education"
-    t.string "stages", default: "--- []\n"
-    t.string "text", default: "--- []\n"
+    t.string "variant"
     t.json "data", default: {}
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_tests_on_user_id"
