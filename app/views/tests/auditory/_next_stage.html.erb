@@ -1,6 +1,6 @@
 <div class="next-stage">
   <%= form_with url: "/lab/test/#{@test.id}", method: :put do |form| %>
     <%= form.hidden_field :current_stage, value: stage %>
-    <%= form.submit "Next Stage" %>
+    <%= form.submit stage == '8' ? "Finish": "Next Stage" %>
   <% end %>
 </div>

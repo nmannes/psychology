@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="stage-7">
+    <h1 class="center"> Stage <%= @test.current_stage %> of 8 </h1>
+    <% if @test.stage_7_curr_word %>
+      <h2 class="center"> <%= @test.stage_7_curr_word%> </h2>
+      <div class="flex-row">
+        <% ['first set', 'second set', 'neither'].each do |w| %>
+          <div class="primary">
+            <%= render partial: "tests/auditory/add_entry", :locals => { :stage => @test.current_stage, :word => w } %>
+          </div>
+        <% end %>
+      </div>
+    <% elsif @test.stage8_curr_choices.first.present? %>
+      <% @test.stage8_curr_choices.each do |w| %>
+        <div class="primary">
+          <%= render partial: "tests/auditory/add_entry", :locals => { :stage => @test.current_stage, :word => w } %>
+        </div>
+      <% end %>
+    <%else%>
+      <%= render partial: "tests/auditory/next_stage", :locals => {:stage => @test.current_stage }%>
+    <%end%>
+  </div>
+</div>

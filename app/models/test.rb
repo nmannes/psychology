@@ -49,9 +49,15 @@ class Test < ApplicationRecord
       'f' => 'List as many words beginning with the letter \'F\' as you can',
       's' => 'List as many words beginning with the letter \'S\' as you can',
     }
-    (1..8).each do |n|
+    (1..4).each do |n|
+      h[n.to_s] = 'Some words will be read to you. Please list back as many as you can, in any order'
+    end
+
+    (5..6).each do |n|
       h[n.to_s] = 'Some words [the blue list] will be read to you. Please list back as many as you can, in any order'
     end
+
+    
     
     h[current_stage]
   end
@@ -136,10 +142,31 @@ class Test < ApplicationRecord
   end
 
   def stage7_list
-    (1..10).map(&:to_s)
+    (1..10).map(&:to_s) # tbd
   end
 
   def stage_7_curr_word
     stage7_list[data['7']&.count || 0]
   end
+
+  def stage8_list_1
+    (1..10).map(&:to_s) # tbd
+  end
+
+  def stage8_list_2
+    (101..110).map(&:to_s) # tbd
+  end
+
+  def stage8_curr_index
+    current_stage == '8' && data['8']&.count || 0
+  end
+
+  def stage8_curr_choices
+    current_stage == '8' && [
+      stage8_list_1[stage8_curr_index],
+      stage8_list_2[stage8_curr_index],
+      'Neither'
+    ]
+  end
+
 end

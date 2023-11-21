@@ -1,12 +1,8 @@
 <% if @test.completed? %>
   <p> Test completed</p>
-<% elsif @test.current_stage == "7" %>
+<% elsif ["7","8"].include?(@test.current_stage) %>
   <%= turbo_frame_tag :auditory_form do %>
-    <%= render partial: "tests/auditory/stage_7"%>
-  <% end %>
-<% elsif @test.current_stage == "8" %>
-  <%= turbo_frame_tag :auditory_form do %>
-    <%= render partial: "tests/auditory/stage_8"%>
+    <%= render partial: "tests/auditory/stage_7_and_8"%>
   <% end %>
 <% else %>
   <%= turbo_frame_tag :auditory_form do %>
