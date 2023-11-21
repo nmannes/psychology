@@ -58,7 +58,7 @@ class TestsController < ApplicationController
       age: params.require(:age),
       gender: params.require(:gender),
       user_id: current_user.id,
-      stages: get_stages(params.require(:key), params[:variant]),
+      variant: params[:variant],
       data: get_data(params.require(:key))
     )
     new_test.save!
@@ -101,14 +101,6 @@ class TestsController < ApplicationController
   end
 
   private
-
-  def get_stages(test_type, input)
-    if test_type == 'fluency' 
-      [input || 'animal', 'f','s']
-    elsif test_type == 'auditory'
-      (1..8).map(&:to_s)
-    end
-  end
 
   def get_data(test_type)
    {}

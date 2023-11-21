@@ -18,18 +18,22 @@ class Test < ApplicationRecord
     "/lab/test/#{id}"
   end
 
+  def stages
+
+  end
+
+
   def current_stage
-    parsed_stages = JSON.parse(stages)
     
     if test_type == 'fluency'
-      parsed_stages.find do |s|
+      stages.find do |s|
           ts_key = "#{s}_start_ts"
           s if !data.key?(ts_key) ||  Time.now - data[ts_key].to_time < 1.minute
       end
     elsif test_type == 'auditory'
       es = data['ended_stages']
-      return parsed_stages.first if es.nil?
-      parsed_stages.find do |s|
+      return stages.first if es.nil?
+      stages.find do |s|
         !es.include?(s)
       end || 'completed'
     end
@@ -57,13 +61,21 @@ class Test < ApplicationRecord
     h[current_stage]
   end
 
+  def stages
+    if test_type == 'fluency' 
+      [variant || 'animal', 'f','s']
+    elsif test_type == 'auditory'
+      (1..8).map(&:to_s)
+    end
+  end
+
 
   def current_stage_number
-    (JSON.parse(stages).index(current_stage) || 0) + 1
+    (stages.index(current_stage) || 0) + 1
   end
 
   def num_stages
-    JSON.parse(stages).count
+    stages.count
   end
 
   def add_word(stage, word)
