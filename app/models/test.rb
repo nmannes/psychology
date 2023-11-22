@@ -57,7 +57,8 @@ class Test < ApplicationRecord
       h[n.to_s] = 'Some words [the blue list] will be read to you. Please list back as many as you can, in any order'
     end
 
-    
+    h['7'] = 'Yes or no, was the user asked about this word five times?'
+    h['8'] = 'Which of the words was in the group that was asked about five times?'    
     
     h[current_stage]
   end
@@ -162,7 +163,9 @@ class Test < ApplicationRecord
   end
 
   def stage8_curr_choices
-    current_stage == '8' && [
+    return nil if current_stage != '8' ||
+      stage8_list_1[stage8_curr_index].nil? 
+    [
       stage8_list_1[stage8_curr_index],
       stage8_list_2[stage8_curr_index],
       'Neither'
