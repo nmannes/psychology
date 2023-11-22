@@ -43,7 +43,8 @@ class Test < ApplicationRecord
   end
 
   def curr_stage_time_left
-    1.minute - (Time.now - Time.at(data["#{current_stage}_start_ts"]))
+    return unless data["#{current_stage}_start_ts"]
+    (1.minute - (Time.now - data["#{current_stage}_start_ts"].to_time)).round
   end
 
   def instructions

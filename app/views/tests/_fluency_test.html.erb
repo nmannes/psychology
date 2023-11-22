@@ -12,7 +12,7 @@
         <% if @test.curr_stage_start_time %>
           <h3> Time remaining: 
             <span id="timer">
-              <%= %>
+              <%= @test.curr_stage_time_left %>
             </span> seconds</h3>
           <%= render partial: "tests/fluency/add_entry",
                            :locals => { :stage => @test.current_stage, :begin_button => false } %>
@@ -32,20 +32,22 @@
           <%= render partial: "tests/fluency/add_entry",
                         :locals => { :stage => @test.current_stage, :begin_button => true } %>
         <% end %>
+        <script>
+          if (document.getElementById('timer')) {
+            let ts = new Date(Date.parse('<%= @test.curr_stage_start_time %>'));
+            ts.setMinutes(ts.getMinutes()+1);
+            setInterval(() => {
+              let timer = document.getElementById('timer');
+              let secondsLeft = Math.round((ts - new Date()) / 1000);
+              if (secondsLeft < 0){
+                window.location.reload();
+              } else {
+                timer.textContent = secondsLeft;
+              }
+            }, 100);
+          }
+        </script>
       </div>
     <% end %>
-    <script>
-      let ts = new Date(Date.parse('<%= @test.curr_stage_start_time %>'));
-      console.log(ts);
-      ts.setMinutes(ts.getMinutes()+1);
-      let timer = document.getElementById('timer');
-      setInterval(() => {
-        let secondsLeft = Math.round((ts - new Date()) / 1000);
-        if (secondsLeft < 0){
-          window.location.reload();
-        }
-        timer.textContent = secondsLeft;
-      }, 100);
-    </script>
   </div>
 <% end %>
