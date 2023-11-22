@@ -90,8 +90,8 @@ class Test < ApplicationRecord
       if test_type == 'fluency'
         data[stage] = data[stage].uniq
       end
-      save!
     end
+    save!
   end
 
   def next_stage(stage)

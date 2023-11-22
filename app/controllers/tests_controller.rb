@@ -75,7 +75,6 @@ class TestsController < ApplicationController
   def add_word
     @test = Test.find_by(id: params[:id].to_i, user_id: current_user.id)
     redirect_to '/lab' and return unless @test
-
     @test.add_word(params.require(:stage), params[:word])
     
     render @test.template

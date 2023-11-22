@@ -1,33 +1,50 @@
 <% if @test.completed? %>
   <p> test completed</p>
 <% else %>
-  <%= turbo_frame_tag :fluency_form do %>
-    <div>
-      <h1>Benton Verbal Fluency Test</h1>
-      <h2>
-        Stage: 
-        <span><%= @test.instructions %></span>
-      </h2>
-      <% if @test.curr_stage_start_time %>
-        <h3> Test started at <%= @test.curr_stage_start_time %> </h3>
-        <%= render partial: "tests/fluency/add_entry",
+  <div>
+    <%= turbo_frame_tag :fluency_form do %>
+      <div>
+        <h1>Benton Verbal Fluency Test</h1>
+        <h2>
+          Stage: 
+          <span><%= @test.instructions %></span>
+        </h2>
+        <% if @test.curr_stage_start_time %>
+          <h3> Time remaining: 
+            <span id="timer">
+            </span> second(s)</h3>
+          <%= render partial: "tests/fluency/add_entry",
                            :locals => { :stage => @test.current_stage, :begin_button => false } %>
-        <% if @test.current_list.present? %>
-          <h3> You've already said: </h3>
-          <% @test.current_list.reverse.each do |item| %>
-            <div class="row-entry">
-              <p>
-                <%= item %>
-              </p>
-              <%= render partial: "tests/fluency/delete_entry",
+          <% if @test.current_list.present? %>
+            <h3> You've already said: </h3>
+            <% @test.current_list.reverse.each do |item| %>
+              <div class="row-entry">
+                <p>
+                  <%= item %>
+                </p>
+                <%= render partial: "tests/fluency/delete_entry",
                                        :locals => { :stage => @test.current_stage, :word => item } %>
-            </div>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
-      <% else %>
-        <%= render partial: "tests/fluency/add_entry",
+        <% else %>
+          <%= render partial: "tests/fluency/add_entry",
                         :locals => { :stage => @test.current_stage, :begin_button => true } %>
-      <% end %>
-    </div>
-  <% end %>
+        <% end %>
+      </div>
+    <% end %>
+    <script>
+      let ts = new Date(Date.parse('<%= @test.curr_stage_start_time %>'));
+      console.log(ts);
+      ts.setMinutes(ts.getMinutes()+1);
+      let timer = document.getElementById('timer');
+      setInterval(() => {
+        let secondsLeft = Math.round((ts - new Date()) / 1000);
+        timer.textContent = secondsLeft
+        if (secondsLeft < 0){
+          window.location.reload();
+        }
+      }, 100);
+    </script>
+  </div>
 <% end %>
