@@ -42,6 +42,10 @@ class Test < ApplicationRecord
     data["#{current_stage}_start_ts"]
   end
 
+  def curr_stage_time_left
+    1.minute - (Time.now - Time.at(data["#{current_stage}_start_ts"]))
+  end
+
   def instructions
     h = {
       'animal' => 'List as many animals as you can',
