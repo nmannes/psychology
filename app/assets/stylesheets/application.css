@@ -71,6 +71,18 @@ a {
 .center {
   text-align: center;
   max-width: 50vw;
+  h2 {
+    margin: 0px;
+  }
+}
+
+.text-field {
+  input {
+    width: 100%;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px blue solid;
+  }
 }
 
 .header {
@@ -114,7 +126,7 @@ need media query to shrink the page if required
 .flex-column {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 32px;
 }
 
 .flex-row {
