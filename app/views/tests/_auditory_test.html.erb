@@ -6,37 +6,38 @@
   <% end %>
 <% else %>
   <%= turbo_frame_tag :auditory_form do %>
-    <div>
+    <div class="card">
       <h1 class="center">Auditory Verbal Learning Test</h1>
       <h1 class="center">Stage <%= @test.current_stage_number %> of 8</h1>
-      <span> <%= render partial: "tests/auditory/next_stage",
-                              :locals => { :stage => @test.current_stage } %></span>
-      <div class="flex-row">
-        <div class="half-multiline-flex">
-          <h2>
-            <%= @test.instructions %>
-          </h2>
-          <%= render partial: "tests/auditory/words",
+      <h2>
+        <%= @test.instructions %>
+      </h2>
+      <div class="multiline-flex pb-16">
+        <%= render partial: "tests/auditory/words",
                                :locals => {
                                    :styling => "primary",
                                  :stage => @test.current_stage,
                                  :words => @test.primary_words,
                                } %>
-          <% if @test.secondary_words %>
-            <%= render partial: "tests/auditory/words",
+        <% if @test.secondary_words %>
+          <%= render partial: "tests/auditory/words",
                                    :locals => {
                                        :styling => "secondary",
                                      :stage => @test.current_stage,
                                      :words => @test.secondary_words,
                                    } %>
-          <% end %>
-        </div>
-        <div class="half-multiline-flex">
-          <% @test.current_list && @test.current_list.each_with_index do |item, i| %>
-            <%= render partial: "tests/auditory/delete_entry",
+        <% end %>
+      </div>
+      <div class="multiline-flex pt-16 pb-16 divider-bottom">
+        <p class="label">Rembered words:</p>
+        <% @test.current_list && @test.current_list.each_with_index do |item, i| %>
+          <%= render partial: "tests/auditory/delete_entry",
                                        :locals => { :stage => @test.current_stage, :word => item, :index => i } %>
-          <% end %>
-        </div>
+        <% end %>
+      </div>
+      <div class="begin pt-16">
+        <%= render partial: "tests/auditory/next_stage",
+                              :locals => { :stage => @test.current_stage } %>
       </div>
     </div>
   <% end %>

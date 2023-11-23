@@ -102,11 +102,14 @@ a {
   padding: 16px;
   width: fit-content;
   height: fit-content;
+  max-width: 50vw;
 
   border-radius: 16px;
   border: 1px solid black;
   box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px;
-}
+} /*
+need media query to shrink the page if required
+*/
 
 .flex-column {
   display: flex;
@@ -137,6 +140,11 @@ a {
   }
 }
 
+.label {
+  margin: none;
+  padding: none;
+}
+
 .primary,
 .secondary,
 .delete,
@@ -154,6 +162,15 @@ a {
     background-color: whitesmoke;
     cursor: pointer;
   }
+}
+
+.pb-16 {
+  border-bottom: #34495e 1px solid;
+  padding-bottom: 16px;
+}
+
+.pt-16 {
+  padding-top: 16px;
 }
 
 .primary,
@@ -194,9 +211,7 @@ a {
   }
 }
 
-.half-multiline-flex {
-  margin: 16px;
-  width: 50%;
+.multiline-flex {
   display: flex;
   flex-direction: row;
   gap: 16px;
