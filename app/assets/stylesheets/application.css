@@ -86,26 +86,26 @@ a {
   border-bottom: 1px solid #34495e;
   width: 100%;
   text-align: center;
-  background-color: #CCFFFF;
+  background-color: #ccffff;
 }
 
-
-.center-container{
+.center-container {
   width: 100%;
   min-height: calc(100vh - 75px - 60px);
   display: flex;
   justify-content: center;
-  background-color: #CCFFFF;
+  background-color: #ccffff;
 }
 
 .card {
   margin: 16px auto;
   padding: 16px;
   width: fit-content;
+  height: fit-content;
+
   border-radius: 16px;
   border: 1px solid black;
   box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px;
-
 }
 
 .flex-column {
@@ -121,13 +121,11 @@ a {
   gap: 16px;
 }
 
-
 .row-entry.input {
   width: 60px;
   padding: 16px;
   background-color: blue;
 }
-
 
 .row-entry {
   display: flex;
@@ -139,8 +137,10 @@ a {
   }
 }
 
-
-.primary, .secondary, .delete{
+.primary,
+.secondary,
+.delete,
+.begin {
   input {
     padding: 16px;
     min-width: fit-content;
@@ -156,40 +156,43 @@ a {
   }
 }
 
-.primary {
-  input{
+.primary,
+.begin {
+  input {
     background-color: blue;
   }
   input:hover {
-     color: blue;
-     border: 2px solid blue;
+    color: blue;
+    border: 2px solid blue;
+  }
+}
+
+.begin {
+  input {
+    width: 100%;
   }
 }
 
 .secondary {
-  input{
+  input {
     background-color: red;
   }
   input:hover {
-     color: red;
-     border: 2px solid red;
-
+    color: red;
+    border: 2px solid red;
   }
 }
 
 .delete {
-  input{
+  input {
     background-color: green;
   }
   input:hover {
-     color: green;
-     border: 2px solid red;
-     content:'UNDO';
-
+    color: green;
+    border: 2px solid red;
+    content: "UNDO";
   }
 }
-
-
 
 .half-multiline-flex {
   margin: 16px;
