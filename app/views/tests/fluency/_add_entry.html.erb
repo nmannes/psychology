@@ -1,17 +1,19 @@
-
-
 <% unless begin_button %>
   <%= form_with url: "/lab/test/#{@test.id}", method: :post do |form| %>
-    <%= form.label :word, "New word" %>
-    <%= form.text_field :word, autofocus: true %>
-    <%= form.hidden_field :stage, value: stage %>
-    <%= form.submit "Say" %>
+    <div class="flex-row">
+      <div class="text-field">
+        <%= form.text_field :word, autofocus: true %>
+        <%= form.hidden_field :stage, value: stage %>
+      </div>
+      <div class="primary">
+        <%= form.submit "Add word" %>
+      </div>
+    </div>
   <% end %>
-
 <% else %>
   <%= form_with url: "/lab/test/#{@test.id}", method: :post do |form| %>
-      <%= form.hidden_field :word, value: "" %>
-      <%= form.hidden_field :stage, value: stage %>
-      <%= form.submit "Begin Stage" %>
-    <% end %>
+    <%= form.hidden_field :word, value: "" %>
+    <%= form.hidden_field :stage, value: stage %>
+    <%= form.submit "Begin Stage" %>
+  <% end %>
 <% end %>

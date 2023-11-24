@@ -5,11 +5,11 @@
     <div>
       <%= turbo_frame_tag :fluency_form do %>
         <div>
-          <h1>Benton Verbal Fluency Test</h1>
-          <h2>
-            Stage: 
-            <span><%= @test.instructions %></span>
+          <h1 class="center">Benton Verbal Fluency Test</h1>
+          <h2 class="center">
+            Stage <span><%= @test.current_stage_number%></span> of 3 
           </h2>
+          <h3 class="center"><%= @test.instructions %></h3>
           <% if @test.curr_stage_start_time %>
             <h3> Time remaining: 
               <span id="timer">
@@ -29,8 +29,10 @@
               </div>
             <% end %>
           <% else %>
-            <%= render partial: "tests/fluency/add_entry",
+            <div class="begin">
+              <%= render partial: "tests/fluency/add_entry",
                         :locals => { :stage => @test.current_stage, :begin_button => true } %>
+            </div>
           <% end %>
           <script>
             if (document.getElementById('timer')) {
