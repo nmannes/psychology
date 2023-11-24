@@ -1,0 +1,43 @@
+<table>
+  <tbody>
+    <tr>
+      <th>
+        date administered
+      </th>
+      <th>
+        test type
+      </th>
+      <th>
+        age
+      </th>
+      <th>
+        gender
+      </th>
+    </tr>
+    <% @tests.count > 0 && @tests.reverse.each do |test|%>
+      <tr>
+        <td>
+          <a href="<%= test.url %>">
+            <p class="time"><%= test.created_at.to_i %></p>
+          </a>
+        </td>
+        <td>
+          <%= test.test_type%>
+        </td>
+        <td>
+          <%= test.age %>
+        </td>
+        <td>
+          <%= test.gender %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<script>
+  const times = document.querySelectorAll('.time');
+  for (var i = 0; i < times.length; i++){
+    const a = new Date(parseInt(times[i].innerText) * 1000);
+    times[i].innerText = `${a.toDateString()} ${a.getHours().toString().padStart(2, '0')}:${a.getMinutes().toString().padStart(2, '0')}`;
+  }
+</script>

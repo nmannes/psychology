@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   put 'lab/test/auditory-stage-7/:id' => 'tests#stage7'
 
   delete 'lab/test/:id' => 'tests#delete_entry'
+
+
+  get '/account' => 'accounts#show'
 end
