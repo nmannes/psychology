@@ -18,7 +18,7 @@
             <%= render partial: "tests/fluency/add_entry",
                            :locals => { :stage => @test.current_stage, :begin_button => false } %>
             <% if @test.current_list.present? %>
-              <h3> You've already said: </h3>
+              <h3> You've already said: (press word to undo)</h3>
               <div class="multiline-flex">
                 <% @test.current_list.reverse.each do |item| %>
                   <div class="delete">
