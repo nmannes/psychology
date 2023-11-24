@@ -19,13 +19,12 @@ class Test < ApplicationRecord
   end
 
   def current_stage
-    
     if test_type == 'fluency'
       stages.find do |s|
           ts_key = "#{s}_start_ts"
           s if !data.key?(ts_key) ||  Time.now - data[ts_key].to_time < 1.minute
       end
-    elsif test_type == 'auditory'
+    elsif ['auditory', 'trail'].include?(test_type) 
       es = data['ended_stages']
       return stages.first if es.nil?
       stages.find do |s|
@@ -73,9 +72,10 @@ class Test < ApplicationRecord
       [variant || 'animal', 'f','s']
     elsif test_type == 'auditory'
       (1..8).map(&:to_s)
+    elsif test_type == 'trail'
+      ['a','b']
     end
   end
-
 
   def current_stage_number
     (stages.index(current_stage) || 0) + 1
