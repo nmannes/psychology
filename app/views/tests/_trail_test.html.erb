@@ -4,31 +4,40 @@
   <% else %>
     <div>
       <%= turbo_frame_tag :fluency_form do %>
-        <div>
+        <div class="flex-column">
           <h1 class="center">Trail Making Test</h1>
           <h2 class="center">
-            Stage <span><%= @test.current_stage_number%></span> of 2
+            Stage <%= @test.current_stage.upcase %>
           </h2>
           <a href="https://www.center-tbi.eu/files/approved-translations/English/ENGLISH_TMT.pdf">
             Click here to learn how to administer the test (credit to Center for Traumatic Brain Injury in Antwerp)
           </a>
-          <script>
-            if (document.getElementById('timer')) {
-              let ts = new Date(Date.parse('<%= @test.curr_stage_start_time %>'));
-              ts.setMinutes(ts.getMinutes()+1);
-              setInterval(() => {
-                let timer = document.getElementById('timer');
-                let secondsLeft = Math.round((ts - new Date()) / 1000);
-                if (secondsLeft < 0){
-                  window.location.reload();
-                } else {
-                  timer.textContent = secondsLeft;
-                }
-              }, 100);
-            }
-          </script>
+          <% if @test.curr_stage_start_time %>
+            <p>
+              <span id="timer">
+                <%= Time.now - @test.curr_stage_start_time.to_time %>
+              </span>
+              seconds
+            </p>
+            <%= render partial: "tests/auditory/next_stage", :locals => {:stage => @test.current_stage }%>
+          <% else %>
+            <div class="begin">
+              <%= render partial: 'tests/fluency/add_entry',            
+                  :locals => { :stage => @test.current_stage, :begin_button => true } %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
+    <script>
+      if (document.getElementById("timer">)) {
+        let ts = new Date(Date.parse('<%= @test.curr_stage_start_time %>'));
+        setInterval(() => {
+          let timer = document.getElementById('timer');
+          let secondsLeft = Math.round((new Date() - ts) / 1000);
+          timer.textContent = secondsLeft;
+        }, 100);
+      }
+    </script>
   <% end %>
 </div>

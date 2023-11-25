@@ -76,7 +76,8 @@ a {
   text-align: center;
   max-width: 50vw;
   h2 {
-    margin: 0px;
+    margin: none;
+    padding: none;
   }
 }
 

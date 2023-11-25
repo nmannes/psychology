@@ -95,7 +95,6 @@ class TestsController < ApplicationController
     redirect_to '/lab' and return unless @test
 
     @test.next_stage(params.require(:current_stage))
-
     render @test.template
   end
 

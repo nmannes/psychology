@@ -19,18 +19,25 @@ class Test < ApplicationRecord
   end
 
   def current_stage
-    if test_type == 'fluency'
+    result = if test_type == 'fluency'
       stages.find do |s|
           ts_key = "#{s}_start_ts"
           s if !data.key?(ts_key) ||  Time.now - data[ts_key].to_time < 1.minute
       end
-    elsif ['auditory', 'trail'].include?(test_type) 
+    elsif test_type == 'auditory'
       es = data['ended_stages']
       return stages.first if es.nil?
       stages.find do |s|
         !es.include?(s)
-      end || 'completed'
+      end
+    elsif test_type == 'trail'
+      stages.find do |s|
+        start_key = "#{s}_start_ts"
+        end_key = "#{s}_end_ts"
+        s if !(data.key?(start_key) && data.key?(end_key))
+      end
     end
+    result || 'completed'
   end
 
   def completed?
@@ -85,8 +92,9 @@ class Test < ApplicationRecord
     stages.count
   end
 
+  # add word also starts the current stage depending on the type of 
   def add_word(stage, word)
-    if test_type == 'fluency'
+    if ['fluency', 'trail'].include?(test_type) 
       data["#{stage}_start_ts"] ||= Time.now
     end
     if word.present?
@@ -100,8 +108,12 @@ class Test < ApplicationRecord
   end
 
   def next_stage(stage)
-    data['ended_stages'] ||= []
-    data['ended_stages'] << stage
+    if test_type == 'trail'
+      data["#{stage}_end_ts"] ||= Time.now
+    else
+      data['ended_stages'] ||= []
+      data['ended_stages'] << stage
+    end
     save!
   end
 
