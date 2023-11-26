@@ -19,25 +19,27 @@
               </span>
               seconds
             </p>
-            <%= render partial: "tests/auditory/next_stage", :locals => {:stage => @test.current_stage }%>
+            <div class="begin">
+              <%= render partial: "tests/auditory/next_stage", :locals => {:stage => @test.current_stage }%>
+            </div>
           <% else %>
-            <div class="begin" onClick="() => window.location.reload();">
+            <div class="begin">
               <%= render partial: 'tests/fluency/add_entry',            
                   :locals => { :stage => @test.current_stage, :begin_button => true } %>
             </div>
           <% end %>
         </div>
+        <script>
+          let ts = new Date(Date.parse('<%= @test.curr_stage_start_time %>'));
+          setInterval(() => {
+            let timer = document.getElementById('timer');
+            if (timer) {
+              let secondsLeft = Math.round((new Date() - ts) / 1000);
+              timer.textContent = secondsLeft;
+            }
+          }, 100);
+        </script>
       <% end %>
     </div>
   <% end %>
-  <script>
-    let ts = new Date(Date.parse('<%= @test.curr_stage_start_time %>'));
-    setInterval(() => {
-      let timer = document.getElementById('timer');
-      if (timer) {
-        let secondsLeft = Math.round((new Date() - ts) / 1000);
-        timer.textContent = secondsLeft;
-      }
-    }, 100);
-  </script>
 </div>
