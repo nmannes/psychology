@@ -13,12 +13,29 @@
             Click here to learn how to administer the test (credit to Center for Traumatic Brain Injury in Antwerp)
           </a>
           <% if @test.curr_stage_start_time %>
-            <p>
+            <h3 class="center">
               <span id="timer">
                 <%= (Time.now - @test.curr_stage_start_time.to_time).round %>
               </span>
-              seconds
-            </p>
+            </h3>
+            <div class="multiline-flex divider-bottom">
+              <p class="label">mark error:</p>
+              <%= render partial: "tests/auditory/words",
+                               :locals => {
+                                   :styling => "primary",
+                                 :stage => @test.current_stage,
+                                 :words => @test.trail_options,
+                               } %>
+            </div>
+            <% if @test.current_list.count > 0 %>
+              <div class="multiline-flex">
+                <p class="label">Mistakes:</p>
+                <% @test.current_list.each_with_index do |item, i| %>
+                  <%= render partial: "tests/auditory/delete_entry",
+                                       :locals => { :stage => @test.current_stage, :word => item.upcase, :index => i } %>
+                <% end %>
+              </div>
+            <% end %>
             <div class="begin">
               <%= render partial: "tests/auditory/next_stage", :locals => {:stage => @test.current_stage }%>
             </div>
@@ -40,8 +57,8 @@
   setInterval(() => {
     let timer = document.getElementById('timer');
     if (timer) {
-      let secondsLeft = Math.round((new Date() - window.ts) / 1000);
-      timer.textContent = secondsLeft;
+      let secondsPassed = Math.round((new Date() - window.ts) / 100) / 10;
+      timer.textContent = secondsPassed;
     }
   }, 100);
 </script>

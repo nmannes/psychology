@@ -100,7 +100,7 @@ class Test < ApplicationRecord
     if word.present?
       data[stage] ||= []
       data[stage] << word.downcase
-      if test_type == 'fluency'
+      if ['fluency', 'trail'].include?(test_type) 
         data[stage] = data[stage].uniq
       end
     end
@@ -187,6 +187,20 @@ class Test < ApplicationRecord
       stage8_list_2[stage8_curr_index],
       'Neither'
     ]
+  end
+
+  def trail_options
+    current_stage == 'a' ? trail_part_a : trail_part_b
+  end
+
+  def trail_part_a
+    (1..25).map(&:to_s)
+  end
+  
+  def trail_part_b
+    (1..13).map(&:to_s).zip(
+      ('A'..'L').to_a
+    ).flatten.compact
   end
 
 end
