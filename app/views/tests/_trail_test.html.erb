@@ -1,9 +1,9 @@
-<div class="card">
-  <% if @test.completed? %>
-    <p> test completed</p>
-  <% else %>
-    <div>
-      <%= turbo_frame_tag :fluency_form do %>
+<%= turbo_frame_tag :trail_test do %>
+  <div class="card">
+    <% if @test.completed? %>
+      <p> test completed</p>
+    <% else %>
+      <div>
         <div class="flex-column">
           <h1 class="center">Trail Making Test</h1>
           <h2 class="center">
@@ -29,17 +29,17 @@
             </div>
           <% end %>
         </div>
-        <script>
-          let ts = new Date(Date.parse('<%= @test.curr_stage_start_time %>'));
-          setInterval(() => {
-            let timer = document.getElementById('timer');
-            if (timer) {
-              let secondsLeft = Math.round((new Date() - ts) / 1000);
-              timer.textContent = secondsLeft;
-            }
-          }, 100);
-        </script>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+      </div>
+    <% end %>
+  </div>
+  <script>
+    let ts = new Date(Date.parse('<%= @test.curr_stage_start_time %>'));
+    setInterval(() => {
+      let timer = document.getElementById('timer');
+      if (timer) {
+        let secondsLeft = Math.round((new Date() - ts) / 1000);
+        timer.textContent = secondsLeft;
+      }
+    }, 100);
+  </script>
+<% end %>
