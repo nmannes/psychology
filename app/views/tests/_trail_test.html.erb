@@ -33,13 +33,15 @@
     <% end %>
   </div>
   <script>
-    let ts = new Date(Date.parse('<%= @test.curr_stage_start_time %>'));
-    setInterval(() => {
-      let timer = document.getElementById('timer');
-      if (timer) {
-        let secondsLeft = Math.round((new Date() - ts) / 1000);
-        timer.textContent = secondsLeft;
-      }
-    }, 100);
+    window.ts = new Date(Date.parse('<%= @test.curr_stage_start_time %>'));
   </script>
 <% end %>
+<script>
+  setInterval(() => {
+    let timer = document.getElementById('timer');
+    if (timer) {
+      let secondsLeft = Math.round((new Date() - window.ts) / 1000);
+      timer.textContent = secondsLeft;
+    }
+  }, 100);
+</script>
