@@ -1,27 +1,34 @@
 css:
   .content {
     display: flex;
+    gap: 16px;
+    margin-top: 16px;
     justify-content: space-evenly;
     flex-direction: column;
   }
 
   .test-card {
     width: 50vw;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 16px;
     padding: 16px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    color: black;
+    h2, p {
+      color: black;
+    }
   }
 
   .test-card:hover {
     width: 50vw;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 16px;
     padding: 16px;
     background: #00008B;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     color: white;
+    h2, p {
+      color: white;
+    }
   }
 
   p {
@@ -31,9 +38,26 @@ css:
     text-wrap: nowrap;
   }
 
+  h2 {
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+    text-wrap: nowrap;
+  }
+
+  .header-style {
+    border-bottom: 1px solid black;
+  }
+
+
 div.content
+  div.header-style
+    h1.center
+      | Select an evaluation
   - @test_types.each do |test|
     = link_to test[:url]
       div.test-card
-        p
+        h2.center
           = test[:name]
+        p.center
+          = test[:description]

@@ -28,7 +28,7 @@
                                    } %>
         <% end %>
       </div>
-      <div class="multiline-flex pt-16 pb-16 divider-bottom">
+      <div class="multiline-flex pt-16 pb-16">
         <p class="label">Rembered words:</p>
         <% @test.current_list && @test.current_list.each_with_index do |item, i| %>
           <%= render partial: "tests/auditory/delete_entry",

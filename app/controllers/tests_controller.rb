@@ -12,16 +12,19 @@ class TestsController < ApplicationController
   def show
     @test_types = [
       {
-        name: 'Benton Verbal Fluency Test',
-        url: '/lab/begin?key=fluency'
+        name: 'Verbal Fluency Test',
+        url: '/lab/begin?key=fluency',
+        description: 'Cognitive function'
       },
       {
-        name: 'Rey Auditory Verbal Learning Test',
-        url: '/lab/begin?key=auditory'
+        name: 'Auditory Verbal Learning Test',
+        url: '/lab/begin?key=auditory',
+        description: 'Memory and recall'
       },
       {
         name: 'Trail Making Test',
-        url: '/lab/begin?key=trail'
+        url: '/lab/begin?key=trail',
+        description: 'Visual attention and task-switching'
       }
     ]
   end

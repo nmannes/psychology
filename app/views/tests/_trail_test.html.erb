@@ -18,7 +18,7 @@
                 <%= (Time.now - @test.curr_stage_start_time.to_time).round %>
               </span>
             </h3>
-            <div class="multiline-flex divider-bottom">
+            <div class="multiline-flex pb-16">
               <p class="label">mark error:</p>
               <%= render partial: "tests/auditory/words",
                                :locals => {

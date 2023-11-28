@@ -111,7 +111,8 @@ a {
 
 .center-container {
   width: 100%;
-  min-height: calc(100vh - 75px - 60px);
+  min-height: calc(100vh - 149px);
+  max-height: fit-content;
   display: flex;
   justify-content: center;
   background-color: #ccffff;
