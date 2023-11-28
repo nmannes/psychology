@@ -1,5 +1,5 @@
 module TestData
-    def animal
+    def self.animal
         %[
         Aardvark
         Abyssinian
@@ -202,7 +202,7 @@ module TestData
         Cuttlefish
         Dachshund
         Dalmatian
-        Darwin’s Frog
+        Darwin's Frog
         Deer
         Desert Tortoise
         Deutsche Bracke
@@ -700,6 +700,6 @@ module TestData
         Zebu
         Zonkey
         Zorse
-        ]
+    ].split('\n')
     end
 end

@@ -3,30 +3,9 @@
 class TestsController < ApplicationController
   before_action :authenticate_user!
 
-  TESTS = {
-    'fluency' => 'Benton Verbal Fluency Test',
-    'auditory' => 'Rey Auditory Verbal Learning Test',
-    'trail' => 'Trail Making Test'
-  }.freeze
 
   def show
-    @test_types = [
-      {
-        name: 'Verbal Fluency Test',
-        url: '/lab/begin?key=fluency',
-        description: 'Cognitive function'
-      },
-      {
-        name: 'Auditory Verbal Learning Test',
-        url: '/lab/begin?key=auditory',
-        description: 'Memory and recall'
-      },
-      {
-        name: 'Trail Making Test',
-        url: '/lab/begin?key=trail',
-        description: 'Visual attention and task-switching'
-      }
-    ]
+    @test_types = Constants::OFFERED_TESTS
   end
 
   def list
@@ -37,19 +16,7 @@ class TestsController < ApplicationController
     @test = params.require(:key)
     @title = TESTS[@test]
 
-    @education_levels = [
-        'No schooling completed', 
-        'Nursery school to 8th grade', 
-        'Some high school, no diploma',
-        'High school graduate, diploma or GED', 
-        'Some college credit, no degree',
-        'Trade/technical/vocational training',
-        'Associate degree', 
-        'Bachelor’s degree', 
-        'Master\'s degree', 
-        'Professional degree', 
-        'Doctorate degree'
-    ]
+    @education_levels = Constants::EDUCATION_LEVELS
     return if @title
 
     redirect_to '/lab' and return

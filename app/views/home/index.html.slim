@@ -1,10 +1,10 @@
 css:
   .content {
     display: flex;
-    gap: 16px;
-    margin-top: 16px;
-    justify-content: space-evenly;
+    gap: 32px;
+    margin-top: 32px;
     flex-direction: column;
+    max-width: 40vw;
   }
 
   .test-card {
@@ -31,33 +31,17 @@ css:
     }
   }
 
-  p {
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center;
-    text-wrap: nowrap;
-  }
-
-  h2 {
-    font-size: 24px;
-    font-weight: 800;
-    text-align: center;
-    text-wrap: nowrap;
-  }
-
-  .header-style {
-    border-bottom: 1px solid black;
-  }
-
-
 div.content
-  div.header-style
-    h1.center
-      | Select an evaluation
+  div
+    h1
+      |This website is for administering tests that measure elderly cognitive decline
+
+    h2
+      |Right now, we support the following tests:
+  
+  ul
   - @test_types.each do |test|
-    = link_to test[:auth_url]
+    = link_to test[:url]
       div.test-card
         h2.center
           = test[:name]
-        p.center
-          = test[:description_short]
