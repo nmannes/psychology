@@ -138,27 +138,27 @@ include Foo
   end
 
   def primary_words
-    if current_stage == '5'
-      w2
+    if current_stage == '6'
+      auditory_word_list_2
     else
-      w1
+      auditory_word_list_1
     end
   end
 
   def secondary_words 
-    return if current_stage < '5'
-    if current_stage == '5'
-      w1
+    return if current_stage < '6'
+    if current_stage == '6'
+      auditory_word_list_1
     else
-      w2
+      auditory_word_list_2
     end
   end
 
-  def w1
+  def auditory_word_list_1
     %w[drum curtain bell coffee school parent moon garden hat farmer nose turkey color house river]
   end
 
-  def w2
+  def auditory_word_list_2
     %w[desk ranger bird shoe stove mountain glasses towel cloud boat lamb gun pencil church fish] 
   end
 
