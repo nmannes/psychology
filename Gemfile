@@ -77,3 +77,5 @@ gem 'react-rails', '= 3.1.1'
 gem 'shakapacker', '= 7.1'
 
 gem 'slim'
+
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'

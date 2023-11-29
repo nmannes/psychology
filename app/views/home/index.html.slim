@@ -2,13 +2,13 @@ css:
   .content {
     display: flex;
     gap: 32px;
-    margin-top: 32px;
+    margin: 32px auto;
     flex-direction: column;
     max-width: 40vw;
   }
 
   .test-card {
-    width: 50vw;
+    width: calc(100%- 32px);
     border: 2px solid black;
     border-radius: 16px;
     padding: 16px;
@@ -19,7 +19,7 @@ css:
   }
 
   .test-card:hover {
-    width: 50vw;
+    width: calc(100%- 32px);
     border: 2px solid black;
     border-radius: 16px;
     padding: 16px;
@@ -34,12 +34,7 @@ css:
 div.content
   div
     h1
-      |This website is for administering tests that measure elderly cognitive decline
-
-    h2
-      |Right now, we support the following tests:
-  
-  ul
+      |This website is for administering the following tests for measuring elderly cognitive decline:
   - @test_types.each do |test|
     = link_to test[:url]
       div.test-card

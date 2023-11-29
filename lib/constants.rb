@@ -8,9 +8,10 @@ module Constants
 
 
     TEST_INFO_COPY = {
-      'auditory' => (1..5).map {|n| "Paragraph #{n}"},
-      'fluency' => (1..5).map {|n| "Paragraph #{n}"},
-      'trail' => (1..5).map {|n| "Paragraph #{n}"}
+      'auditory' => Faker::Lorem.paragraphs,
+      'fluency' => Faker::Lorem.paragraphs,
+      'trail' => Faker::Lorem.paragraphs,
+
     }.freeze
 
 
