@@ -1,6 +1,8 @@
 module TestData
     def self.animal
-        %[
+        @@cached ||= nil
+        return @@cached if @@cached
+        animal_list = <<-TEXT
         Aardvark
         Abyssinian
         Adelie Penguin
@@ -700,6 +702,7 @@ module TestData
         Zebu
         Zonkey
         Zorse
-    ].split('\n')
+    TEXT
+    @@cached = animal_list.split("\n").map(&:strip).map(&:downcase)
     end
 end

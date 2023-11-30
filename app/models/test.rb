@@ -15,8 +15,6 @@
 #
 class Test < ApplicationRecord
 
-include Foo
-
   def url
     "/lab/test/#{id}"
   end
@@ -79,7 +77,7 @@ include Foo
 
   def stages
     if test_type == 'fluency' 
-      [variant || 'animal', 'f','s']
+      [variant || 'animal', 'f','a', 's']
     elsif test_type == 'auditory'
       (1..8).map(&:to_s)
     elsif test_type == 'trail'

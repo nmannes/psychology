@@ -14,7 +14,7 @@ class TestsController < ApplicationController
   end
   def begin
     @test = params.require(:key)
-    @title = TESTS[@test]
+    @title = Constants::TESTS[@test]
 
     @education_levels = Constants::EDUCATION_LEVELS
     return if @title

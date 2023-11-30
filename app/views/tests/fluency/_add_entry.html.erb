@@ -2,7 +2,16 @@
   <%= form_with url: "/lab/test/#{@test.id}", method: :post do |form| %>
     <div class="flex-row">
       <div class="text-field">
-        <%= form.text_field :word, autofocus: true %>
+        <% if stage == 'animal' %>
+          <%= form.text_field :word, autofocus: true, list:'animal-list' %>
+          <datalist id="animal-list">
+            <% ::TestData.animal.each do |animal| %>
+              <option value="<%= animal %>"></option>
+            <% end %>
+          </datalist>
+        <% else %>
+          <%= form.text_field :word, autofocus: true %>
+        <% end%>
         <%= form.hidden_field :stage, value: stage %>
       </div>
       <div class="primary">
