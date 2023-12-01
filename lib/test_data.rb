@@ -1447,7 +1447,6 @@ module TestData
 
     def self.f_words
         <<-TEXT
-        fa
         fabric
         fabrics
         fabulous
@@ -1522,12 +1521,6 @@ module TestData
         favourite
         favourites
         fax
-        fbi
-        fc
-        fcc
-        fd
-        fda
-        fe
         fear
         fears
         feat
@@ -1567,9 +1560,6 @@ module TestData
         fever
         few
         fewer
-        ff
-        fg
-        fi
         fiber
         fibre
         fiction
@@ -1656,8 +1646,6 @@ module TestData
         fixed
         fixes
         fixtures
-        fl
-        fla
         flag
         flags
         flame
@@ -1701,8 +1689,6 @@ module TestData
         fly
         flyer
         flying
-        fm
-        fo
         foam
         focal
         focus
@@ -1784,8 +1770,6 @@ module TestData
         four
         fourth
         fox
-        fp
-        fr
         fraction
         fragrance
         fragrances
@@ -1835,10 +1819,6 @@ module TestData
         frozen
         fruit
         fruits
-        fs
-        ft
-        ftp
-        fu
         fuck
         fucked
         fucking
@@ -1879,11 +1859,9 @@ module TestData
 
     def self.s_words
         <<-TEXT
-        sacramento
         sacred
         sacrifice
         sad
-        saddam
         safari
         safe
         safely
@@ -1901,38 +1879,24 @@ module TestData
         salaries
         salary
         sale
-        salem
         sales
         sally
         salmon
         salon
         salt
-        salvador
         salvation
         sam
         samba
         same
-        samoa
         sample
         samples
         sampling
-        samsung
-        samuel
-        san
         sand
-        sandra
         sandwich
         sandy
         sans
-        santa
-        sanyo
-        sao
         sap
         sapphire
-        sara
-        sarah
-        sas
-        saskatchewan
         sat
         satellite
         satin
@@ -1943,7 +1907,6 @@ module TestData
         saturday
         saturn
         sauce
-        saudi
         savage
         savannah
         save
@@ -1956,9 +1919,6 @@ module TestData
         say
         saying
         says
-        sb
-        sbjct
-        sc
         scale
         scales
         scan
@@ -1985,7 +1945,6 @@ module TestData
         scholarships
         school
         schools
-        sci
         science
         sciences
         scientific
@@ -1997,9 +1956,6 @@ module TestData
         scored
         scores
         scoring
-        scotia
-        scotland
-        scott
         scottish
         scout
         scratch
@@ -2015,18 +1971,13 @@ module TestData
         scripting
         scripts
         scroll
-        scsi
         scuba
         sculpture
-        sd
-        se
         sea
         seafood
         seal
         sealed
-        sean
         search
-        searchcom
         searched
         searches
         searching
@@ -2037,8 +1988,6 @@ module TestData
         seat
         seating
         seats
-        seattle
-        sec
         second
         secondary
         seconds
@@ -2069,7 +2018,6 @@ module TestData
         seems
         seen
         sees
-        sega
         segment
         segments
         select
@@ -2089,7 +2037,6 @@ module TestData
         semiconductor
         seminar
         seminars
-        sen
         senate
         senator
         senators
@@ -2097,7 +2044,6 @@ module TestData
         sender
         sending
         sends
-        senegal
         senior
         seniors
         sense
@@ -2108,19 +2054,13 @@ module TestData
         sent
         sentence
         sentences
-        seo
-        sep
         separate
         separated
         separately
         separation
-        sept
         september
-        seq
         sequence
         sequences
-        ser
-        serbia
         serial
         series
         serious
@@ -2150,27 +2090,18 @@ module TestData
         severe
         sewing
         sex
-        sexcam
-        sexo
         sexual
         sexuality
         sexually
         sexy
-        sf
-        sg
-        sh
         shade
         shades
         shadow
         shadows
         shaft
         shake
-        shakespeare
-        shakira
         shall
         shame
-        shanghai
-        shannon
         shape
         shaped
         shapes
@@ -2181,25 +2112,19 @@ module TestData
         shareware
         sharing
         shark
-        sharon
         sharp
         shaved
-        shaw
         she
         shed
         sheep
         sheer
         sheet
         sheets
-        sheffield
         shelf
         shell
         shelter
-        shemale
-        shemales
         shepherd
         sheriff
-        sherman
         shield
         shift
         shine
@@ -2219,12 +2144,9 @@ module TestData
         shooting
         shop
         shopper
-        shoppercom
         shoppers
         shopping
-        shoppingcom
         shops
-        shopzilla
         shore
         short
         shortcuts
@@ -2246,15 +2168,11 @@ module TestData
         showtimes
         shut
         shuttle
-        si
-        sic
         sick
         side
         sides
-        sie
         siemens
         sierra
-        sig
         sight
         sigma
         sign
@@ -2275,10 +2193,8 @@ module TestData
         silk
         silly
         silver
-        sim
         similar
         similarly
-        simon
         simple
         simplified
         simply
@@ -2291,7 +2207,6 @@ module TestData
         sin
         since
         sing
-        singapore
         singer
         singh
         singing
@@ -2315,7 +2230,6 @@ module TestData
         size
         sized
         sizes
-        sk
         skating
         ski
         skiing
@@ -2327,10 +2241,8 @@ module TestData
         skip
         skirt
         skirts
-        sku
         sky
         skype
-        sl
         slave
         sleep
         sleeping
@@ -2346,37 +2258,26 @@ module TestData
         slope
         slot
         slots
-        slovak
-        slovakia
-        slovenia
         slow
         slowly
         slut
         sluts
-        sm
         small
         smaller
         smart
         smell
         smile
         smilies
-        smith
-        smithsonian
         smoke
         smoking
         smooth
-        sms
-        smtp
-        sn
         snake
         snap
         snapshot
         snow
         snowboard
         so
-        soa
         soap
-        soc
         soccer
         social
         societies
@@ -2392,7 +2293,6 @@ module TestData
         soil
         sol
         solar
-        solaris
         sold
         soldier
         soldiers
@@ -2400,19 +2300,16 @@ module TestData
         solely
         solid
         solo
-        solomon
         solution
         solutions
         solve
         solved
         solving
         soma
-        somalia
         some
         somebody
         somehow
         someone
-        somerset
         something
         sometimes
         somewhat
@@ -2422,7 +2319,6 @@ module TestData
         songs
         sonic
         sons
-        sony
         soon
         soonest
         sophisticated
@@ -2440,23 +2336,19 @@ module TestData
         source
         sources
         south
-        southampton
         southeast
         southern
         southwest
         soviet
         sox
-        sp
         spa
         space
         spaces
-        spain
         spam
         span
         spanish
         spank
         spanking
-        sparc
         spare
         spas
         spatial
@@ -2466,7 +2358,6 @@ module TestData
         speaking
         speaks
         spears
-        spec
         special
         specialist
         specialists
@@ -2494,7 +2385,6 @@ module TestData
         speeds
         spell
         spelling
-        spencer
         spend
         spending
         spent
@@ -2529,23 +2419,14 @@ module TestData
         spreading
         spring
         springer
-        springfield
         springs
         sprint
         spy
         spyware
-        sq
-        sql
         squad
         square
         squirt
         squirting
-        sr
-        src
-        sri
-        ss
-        ssl
-        st
         stability
         stable
         stack
@@ -2558,19 +2439,15 @@ module TestData
         stakeholders
         stamp
         stamps
-        stan
         stand
         standard
         standards
         standing
         standings
         stands
-        stanford
-        stanley
         star
         starring
         stars
-        starsmerchant
         start
         started
         starter
@@ -2600,8 +2477,6 @@ module TestData
         stayed
         staying
         stays
-        std
-        ste
         steady
         steal
         steam
@@ -2609,15 +2484,8 @@ module TestData
         steering
         stem
         step
-        stephanie
-        stephen
         steps
         stereo
-        sterling
-        steve
-        steven
-        stevens
-        stewart
         stick
         sticker
         stickers
@@ -2625,7 +2493,6 @@ module TestData
         sticky
         still
         stock
-        stockholm
         stockings
         stocks
         stolen
@@ -2644,7 +2511,6 @@ module TestData
         stories
         storm
         story
-        str
         straight
         strain
         strand
@@ -2705,9 +2571,7 @@ module TestData
         styles
         stylish
         stylus
-        su
         sub
-        subaru
         subcommittee
         subdivision
         subject
@@ -2744,10 +2608,8 @@ module TestData
         suck
         sucking
         sucks
-        sudan
         sudden
         suddenly
-        sue
         suffer
         suffered
         suffering
@@ -2803,7 +2665,6 @@ module TestData
         suppose
         supposed
         supreme
-        sur
         sure
         surely
         surf
@@ -2831,21 +2692,14 @@ module TestData
         survive
         survivor
         survivors
-        susan
-        suse
         suspect
         suspected
         suspended
         suspension
-        sussex
         sustainability
         sustainable
         sustained
-        suzuki
-        sv
-        sw
         swap
-        sweden
         swedish
         sweet
         swift
@@ -2858,7 +2712,6 @@ module TestData
         switched
         switches
         switching
-        switzerland
         sword
         sydney
         symantec
@@ -2876,9 +2729,6 @@ module TestData
         syntax
         synthesis
         synthetic
-        syracuse
-        syria
-        sys
         system
         systematic
         systems
