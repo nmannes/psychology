@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  age: 1
+  education: MyString
+  user: one
+  test: one
+
+two:
+  age: 1
+  education: MyString
+  user: two
+  test: two
