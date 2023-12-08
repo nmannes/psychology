@@ -4,8 +4,8 @@ class CreateClients < ActiveRecord::Migration[7.0]
       t.integer :age
       t.string :gender
       t.string :education
+      t.string :pseudonym
       t.references :user, null: false, foreign_key: true
-
       t.timestamps
     end
   end

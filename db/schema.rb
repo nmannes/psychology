@@ -15,6 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_02_161213) do
     t.integer "age"
     t.string "gender"
     t.string "education"
+    t.string "pseudonym"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
