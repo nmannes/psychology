@@ -12,6 +12,7 @@ class TestsController < ApplicationController
     @tests = Test.where(user_id: current_user.id)
 
   end
+
   def begin
     @test = params.require(:key)
     @title = Constants::TESTS[@test]

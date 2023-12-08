@@ -15,6 +15,8 @@
 #
 class Test < ApplicationRecord
 
+  belongs_to :client
+
   def url
     "/lab/test/#{id}"
   end

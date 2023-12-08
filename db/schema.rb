@@ -10,18 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_09_161213) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_02_161213) do
+  create_table "clients", force: :cascade do |t|
+    t.integer "age"
+    t.string "gender"
+    t.string "education"
+    t.integer "user_id", null: false
+    t.integer "test_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_id"], name: "index_clients_on_test_id"
+    t.index ["user_id"], name: "index_clients_on_user_id"
+  end
+
   create_table "tests", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "test_type"
-    t.integer "age"
-    t.string "gender"
-    t.string "education"
     t.string "variant"
     t.json "data", default: {}
-    t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_tests_on_user_id"
+    t.integer "client_id", null: false
+    t.index ["client_id"], name: "index_tests_on_client_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,5 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_161213) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "tests", "users"
+  add_foreign_key "clients", "tests"
+  add_foreign_key "clients", "users"
+  add_foreign_key "tests", "clients"
 end

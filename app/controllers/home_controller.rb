@@ -4,7 +4,8 @@ class HomeController < ApplicationController
   def index
     @test_types = ::Constants::OFFERED_TESTS
     if current_user
-      redirect_to '/lab'
+      @clients = current_user.clients
+      render 'home/clients' and return
     end
   end
 
