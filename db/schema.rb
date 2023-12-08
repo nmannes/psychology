@@ -16,10 +16,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_02_161213) do
     t.string "gender"
     t.string "education"
     t.integer "user_id", null: false
-    t.integer "test_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["test_id"], name: "index_clients_on_test_id"
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
@@ -49,7 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_02_161213) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "clients", "tests"
   add_foreign_key "clients", "users"
   add_foreign_key "tests", "clients"
 end

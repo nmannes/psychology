@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   
   get '/account' => 'accounts#show'
 
-
+  get '/clients/new' => 'clients#new_client'
+  post '/clients/new' => 'clients#create'
 
 
 

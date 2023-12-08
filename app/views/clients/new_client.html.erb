@@ -1,0 +1,19 @@
+ <%= form_with url: "/clients/new", method: :post do |form| %>
+  <div class="flex-column">
+    <div>
+      <%= form.label :age, "Age:" %>
+      <%= form.number_field :age, in: (1..100), step: 1 %>
+    </div>
+    <div>
+      <%= form.label :gender, "Gender:" %>
+      <%= form.select :gender, ["Man", "Woman", "Non-binary"] %>
+    </div>
+    <div>
+      <%= form.label :education, "Level of education:" %>
+      <%= form.select :education, @education_levels %>
+    </div>
+    <div class="begin">
+      <%= form.submit "New Client" %>
+    </div>
+  </div>
+<% end %>
