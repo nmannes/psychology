@@ -1,0 +1,23 @@
+css:
+  .main-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+div.main-container
+  div 
+    h1.center
+      |Clients
+  div
+    a [href="/clients/new"]
+      p
+        |new client
+  div
+    - @clients.each do |client|
+      div.flex-row
+        p
+          |#{client.age}
+        p
+          |#{client.gender}
+        p
+          |#{client.pseudonym}

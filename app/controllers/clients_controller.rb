@@ -28,6 +28,8 @@ class ClientsController < ApplicationController
             education: params.require(:education),
             pseudonym: "#{first_name} #{Faker::Name.last_name}",
         )
+
+        redirect_to '/'
     end
 
     def update
