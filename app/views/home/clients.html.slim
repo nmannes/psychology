@@ -4,6 +4,19 @@ css:
     flex-direction: column;
   }
 
+  td {
+    padding: 16px;
+    margin: 0px;
+  }
+  tr:hover {
+    cursor: pointer;
+    background: black;
+    color: white;
+    td {
+      background: black;
+    }
+  }
+
 div.main-container
   div 
     h1.center
@@ -13,11 +26,29 @@ div.main-container
       p
         |new client
   div
-    - @clients.each do |client|
-      div.flex-row
-        p
-          |#{client.age}
-        p
-          |#{client.gender}
-        p
-          |#{client.pseudonym}
+    table
+      thead
+        tr
+          td
+            |age
+          td
+            |gender
+          td
+            |education
+          td
+            |pseudonym
+          td
+            |signed up 
+      tbody
+        - @clients.each do |client|
+          tr [onClick="window.location.href = '#{client.url}'"]
+            td
+              |#{client.age}
+            td
+              |#{client.gender}
+            td
+              |#{client.education}
+            td
+              |#{client.pseudonym}
+            td
+              |#{client.created_at.to_date}
