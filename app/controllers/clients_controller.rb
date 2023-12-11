@@ -8,6 +8,11 @@ class ClientsController < ApplicationController
 
     end
 
+    def show
+        @client = Client.find_by(id: params.require(:id))
+        redirect_to '/' and return unless @client && current_user == @client.user
+    end
+
     def create
         g = params.require(:gender)
         first_name = case g
