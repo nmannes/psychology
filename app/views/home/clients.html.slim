@@ -2,19 +2,25 @@ css:
   .main-container {
     display: flex;
     flex-direction: column;
+    width: 60vw;
   }
-
-  td {
+  .entry {
+    background: white;
+    color: black;
     padding: 16px;
-    margin: 0px;
+    border-radius: 16px;
+    border: 1px solid black; 
   }
-  tr:hover {
+  .entry:hover {
     cursor: pointer;
     background: black;
     color: white;
-    td {
-      background: black;
-    }
+    border-radius: 16px;
+    border: 1px solid black;
+  }
+
+  .sb {
+    justify-content: space-between;
   }
 
 div.main-container
@@ -25,30 +31,29 @@ div.main-container
     a [href="/clients/new"]
       p
         |new client
-  div
-    table
-      thead
-        tr
-          td
-            |age
-          td
-            |gender
-          td
-            |education
-          td
-            |pseudonym
-          td
-            |signed up 
-      tbody
-        - @clients.each do |client|
-          tr [onClick="window.location.href = '#{client.url}'"]
-            td
-              |#{client.age}
-            td
-              |#{client.gender}
-            td
-              |#{client.education}
-            td
-              |#{client.pseudonym}
-            td
-              |#{client.created_at.to_date}
+  div.flex-column
+    div.flex-row.sb style="border-bottom: 3px solid black; padding: 16px;"
+      p
+        |age
+      p
+        |gender
+      p
+        |education
+      p
+        |pseudonym
+      p
+        |signed up 
+  
+    - @clients.reverse.each do |client|
+      a [href="#{client.url}"]
+        div.flex-row.entry.sb
+          p
+            |#{client.age}
+          p
+            |#{client.gender}
+          p
+            |#{client.education}
+          p
+            |#{client.pseudonym}
+          p
+            |#{client.created_at.to_date}
