@@ -26,7 +26,7 @@ class ClientsController < ApplicationController
             raise "unidentified gender"
         end
 
-        Client.create!(
+        new_client = Client.new(
             user: current_user,
             age: params.require(:age),
             gender: params.require(:gender),
@@ -34,7 +34,9 @@ class ClientsController < ApplicationController
             pseudonym: "#{first_name} #{Faker::Name.last_name}",
         )
 
-        redirect_to '/'
+        new_client.save!
+
+        redirect_to new_client.url
     end
 
     def update
