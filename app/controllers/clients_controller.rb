@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
 
     def show
         @client = Client.find_by(id: params.require(:id))
-        redirect_to '/' and return unless @client && current_user == @client.user
+        redirect_to '/' and return unless @client && @client.user == current_user
     end
 
     def create
